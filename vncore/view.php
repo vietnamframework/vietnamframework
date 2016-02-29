@@ -53,7 +53,7 @@ class View
      */
     public static function addJquery() {
         
-        $script_jquery = '<script type="text/javascript" src="'.Core::$base_url.VENDOR_FOLDER."jquery/jquery.min.js".'"></script>';
+        $script_jquery = '<script type="text/javascript" src="'.Core::$base_url.VENDOR_FOLDER."components/jquery/jquery.min.js".'"></script>';
         return $script_jquery;
         
     }

@@ -20,6 +20,8 @@ require_once 'validate.php';
 // URL Friendly
 require_once 'urlfiend.php';
 
+// Cache
+require_once 'cache.php';
 // Array
 //require 'hbcore/Array.php';
 // Session

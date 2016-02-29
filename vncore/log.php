@@ -128,7 +128,7 @@ class VNLog
             $suffix .= '_' . static::$_user_file_suffix;
         }
 
-        return  'log/' . date('Ymd') . '_' . $suffix . '.log';
+        return  VN_TMP_DIR.'log/' . date('Ymd') . '_' . $suffix . '.log';
     }
 
     protected static function make_header()

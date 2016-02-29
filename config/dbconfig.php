@@ -6,7 +6,7 @@ function db_config($target)
     $param[''] = array(
         'dsn' => 'mysql:dbname=love;host=localhost', // PDO:db name;host
         'username' => 'root', // user name of database
-        'password' => '123456',// password
+        'password' => '',// password
         'driver_options' => array(PDO::ATTR_PERSISTENT => false)
     );
     
