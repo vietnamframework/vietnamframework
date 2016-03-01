@@ -61,11 +61,39 @@ class Cache extends phpFastCache{
    //isExisting
    public static function isExisting($key){
        return __c()->isExisting($key);
-   } 
+   }
    
+   /**
+    * set data array to cache
+    * @param string $key
+    * @param array $array
+    */
    public static function set_array($key, $array) {
        if(!empty($array)) {
            $data_json = json_encode($array);
+           Cache::set($key, $data_json);
+           return true;
        }
+       
+       return false;
    }
+   
+   public static function get_array($key) {
+       if(__c()->isExisting($key)) {
+            $data_return = __c()->get($key);
+            if(!empty($data_return))
+                $data_return = json_decode($data_return);
+            return $data_return;
+       }
+       return null;
+   }
+   
+   public static function clear() {
+       __c()->clean();
+   }
+   
+   public static function delete($key) {
+       
+   }
+   
 }
