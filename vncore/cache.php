@@ -78,6 +78,10 @@ class Cache extends phpFastCache{
        return false;
    }
    
+   /**
+    * get data array
+    * @param string $key
+    */
    public static function get_array($key) {
        if(__c()->isExisting($key)) {
             $data_return = __c()->get($key);
@@ -88,12 +92,36 @@ class Cache extends phpFastCache{
        return null;
    }
    
+   /**
+    * clear
+    * @return boolean
+    */
    public static function clear() {
        __c()->clean();
+       return true;
    }
    
+   /**
+    * delete key
+    * @param string $key
+    * @return boolean
+    */
    public static function delete($key) {
-       
+       if(__c()->isExisting($key)) {
+            __c()->delete($key);
+       }
+       return true;
    }
    
+   /**
+    * set cache for database
+    * @param string $sql
+    * @param array $param
+    * @param array $data
+    */
+   public static function set_cache_db($sql, $param, $data) {
+       $key = Cache::genaral_key($sql, $param);
+       Cache::set_array($key, $data);
+       return true;
+   }
 }
