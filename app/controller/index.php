@@ -2,11 +2,20 @@
 class Index_Controller extends Controller {
     public function index() {
         
-        $model = new User_model();
+        //$model = new User_model();
         //$tmp = $model->loveme();
         //$this->addHeader(array('acd' =>$tmp));
         //$data['a'] = $tmp;
         //return $this->renderTemplate('index', $data);
+        
+        $array = array('hung' => array('cotien' => array("khong", "co")));
+        
+        $key = Cache::genaral_key("hung", $array);
+        Cache::set_array($key, $array);
+        $data = Cache::get_array($key);
+        
+        var_dump($data); die;
+        
     }
     
     public function Createuser() {
