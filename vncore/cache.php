@@ -124,4 +124,16 @@ class Cache extends phpFastCache{
        Cache::set_array($key, $data);
        return true;
    }
+   
+   /**
+    * get cache for database
+    * @param string $sql
+    * @param array $param
+    * @return Ambigous <NULL, unknown>
+    */
+   public static function get_cache_db($sql, $param) {
+       $key = Cache::genaral_key($sql, $param);
+       $data = Cache::get_array($key);
+       return $data;
+   }
 }

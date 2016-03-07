@@ -204,8 +204,7 @@ Class VNModel extends VNDB {
             if(!empty($orderby)) {
                 $sql .= "ORDER BY " . $orderby;
             }
-    
-            return $this->query($sql, $sql_param);
+            return $this->data_from_cache($sql, $param_where);
     
         } catch (Exception $e) {
             VNLog::debug_var($this->log_name, $e->getMessage());
@@ -237,9 +236,11 @@ Class VNModel extends VNDB {
                 
                 // don't anything
                 if(empty($param_where)) {
-                    return $this->query($sql);
+                    //return $this->query($sql);
+                    return $this->data_from_cache($sql);
                 } else {
-                    return $this->query($sql, $param_where);
+                    //return $this->query($sql, $param_where);
+                    return $this->data_from_cache($sql, $param_where);
                 }
     
             } else {
@@ -253,9 +254,11 @@ Class VNModel extends VNDB {
                 }
                 
                 if(!empty($param_where)) {
-                    return $this->query($sql, $param_where);
+                    //return $this->query($sql, $param_where);
+                    return $this->data_from_cache($sql, $param_where);
                 } else {
-                    return $this->query($sql);
+                    //return $this->query($sql);
+                    return $this->data_from_cache($sql);
                 }
                 
             }
@@ -274,7 +277,8 @@ Class VNModel extends VNDB {
         
         try{
             $sql = "SELECT * FROM ". $this->table." WHERE id = :id";
-            return $this->query($sql, array("id" => $id));
+            //return $this->query($sql, array("id" => $id));
+            return $this->data_from_cache($sql, array("id" => $id));
         } catch (Exception $e) {
             VNLog::debug_var($this->log_name, $e->getMessage());
             return false;
@@ -297,11 +301,15 @@ Class VNModel extends VNDB {
             
             $result = '';
             if(empty($param_where)) {
-                $result = $this->query($sql);
+                //$result = $this->query($sql);
+                $result = $this->data_from_cache($sql);
             } else {
-                $result = $this->query($sql, $param_where);
+                //$result = $this->query($sql, $param_where);
+                $result = $this->data_from_cache($sql, $param_where);
             }
+            $abc = $result[0];
             
+            VNLog::debug_var("data_cache", $abc[0]['count']);
             if(isset($result[0]['count']) && $result[0]['count'] != 0) {
                 return $result[0]['count'];
             }
@@ -325,7 +333,12 @@ Class VNModel extends VNDB {
         try{
             $sql = '';
             if(!empty($column)) {
-                $sql = "SELECT " . implode(",", $column) . " FROM ";
+                if(count($column) == 1) {
+                    $sql = "SELECT " . $column[0] . " FROM ";
+                } else {
+                    $sql = "SELECT " . implode(",", $column) . " FROM ";
+                }
+                
             } else {
                 $sql = "SELECT * FROM ";
             }
@@ -365,9 +378,11 @@ Class VNModel extends VNDB {
             }
             
             if(!empty($param_where)) {
-                return $this->query($sql, $param_where);
+                //return $this->query($sql, $param_where);
+                return $this->data_from_cache($sql, $param_where);
             } else {
-                return $this->query($sql);
+                //return $this->query($sql);
+                return $this->data_from_cache($sql);
             }
             
         } catch (Exception $e) {
@@ -375,5 +390,27 @@ Class VNModel extends VNDB {
             return false;
         }
         
+    }
+    
+    /**
+     * data_from_cache
+     * @param string $sql
+     * @param array $sql_param
+     * @return multitype:unknown |Ambigous
+     */
+    public function data_from_cache($sql, $sql_param = NULL) {
+        if(VN_CACHE_ACTION_FLG == FALSE) {
+            return $this->query($sql, $sql_param);
+        } else {
+        
+            $data_cache = Cache::get_cache_db($sql, $sql_param);
+            if(!empty($data_cache)) {
+                return $data_cache;
+            } else {
+                $data = $this->query($sql, $sql_param);
+                Cache::set_cache_db($sql, $sql_param, $data);
+                return $data;
+            }
+        }
     }
 }

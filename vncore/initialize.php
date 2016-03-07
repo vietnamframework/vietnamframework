@@ -8,6 +8,8 @@ require_once 'config/dbconfig.php';
 require_once 'core.php';
 // View
 require 'view.php';
+// Cache
+require_once 'cache.php';
 // DB
 require 'dbaccess.php';
 // Model
@@ -20,8 +22,6 @@ require_once 'validate.php';
 // URL Friendly
 require_once 'urlfiend.php';
 
-// Cache
-require_once 'cache.php';
 // Array
 //require 'hbcore/Array.php';
 // Session
