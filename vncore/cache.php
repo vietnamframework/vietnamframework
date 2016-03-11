@@ -70,7 +70,8 @@ class Cache extends phpFastCache{
     */
    public static function set_array($key, $array) {
        if(!empty($array)) {
-           $data_json = json_encode($array);
+           //$data_json = json_encode($array);
+           $data_json = serialize($array);
            Cache::set($key, $data_json);
            return true;
        }
@@ -86,7 +87,8 @@ class Cache extends phpFastCache{
        if(__c()->isExisting($key)) {
             $data_return = __c()->get($key);
             if(!empty($data_return))
-                $data_return = json_decode($data_return);
+                //$data_return = json_decode($data_return);unserialize
+                $data_return = unserialize($data_return);
             return $data_return;
        }
        return null;

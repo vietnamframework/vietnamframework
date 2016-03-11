@@ -294,22 +294,19 @@ Class VNModel extends VNDB {
      */
     public function count_length($where = '', $param_where = null) {
         try{
-            $sql = "SELECT count(id) as count FROM " . $this->table;
+            $sql = "SELECT count(*) as count FROM " . $this->table;
+            VNLog::debug_var("data_cache", $sql);
             if(!empty($where)) {
                 $sql .= " WHERE 1=1 AND " . $where;
             }
             
             $result = '';
             if(empty($param_where)) {
-                //$result = $this->query($sql);
                 $result = $this->data_from_cache($sql);
             } else {
-                //$result = $this->query($sql, $param_where);
                 $result = $this->data_from_cache($sql, $param_where);
             }
-            $abc = $result[0];
-            
-            VNLog::debug_var("data_cache", $abc[0]['count']);
+
             if(isset($result[0]['count']) && $result[0]['count'] != 0) {
                 return $result[0]['count'];
             }
@@ -402,7 +399,6 @@ Class VNModel extends VNDB {
         if(VN_CACHE_ACTION_FLG == FALSE) {
             return $this->query($sql, $sql_param);
         } else {
-        
             $data_cache = Cache::get_cache_db($sql, $sql_param);
             if(!empty($data_cache)) {
                 return $data_cache;

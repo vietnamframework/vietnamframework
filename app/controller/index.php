@@ -9,9 +9,10 @@ class Index_Controller extends Controller {
         //return $this->renderTemplate('index', $data);
        
         
-       $all_table = array("t_ctg_section", "t_item_info", "t_iteminfo_sort", "t_iteminfo_sort_copy", "actor"," address"," category"," city"," content"," country"," customer"," film"," film_actor"," film_category"," film_text"," frontend_trans"," func"," grand_permission"," group"," inventory"," language"," language_copy"," payment"," rental"," staff"," store"," url_friendly"," user");
+       $all_table = array("actor"," address"," category"," city"," content"," country"," customer"," film"," film_actor"," film_category"," film_text"," frontend_trans"," func"," grand_permission"," group"," inventory"," language"," language_copy"," payment"," rental"," staff"," store"," url_friendly"," user");
        $model = new VNModel();
        $start_time = microtime();
+       //Cache::clear();
        foreach ($all_table as $item) {
            $model->settable($item);
            $count = $model->count_length('');

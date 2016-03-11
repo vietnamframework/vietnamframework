@@ -4,7 +4,7 @@ class User_model extends VNModel{
     protected $table = 'user';
     
     // name log file
-    protected $log_name = 'LOGIN';
+    protected $log_name = 'User_model_';
     
     
     /**

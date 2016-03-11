@@ -5,6 +5,6 @@ define("VN_APP_DIR", WEB_DIR."/app");
 define("VN_TMP_DIR", WEB_DIR."/tmp/");
 
 
-define("VN_TIME_CACHE", 86400);
+define("VN_TIME_CACHE", 86400);// 1 day
 define("VN_CACHE_DEFAULT", "hakdfuiwye9387kldfjd");
-define("VN_CACHE_ACTION_FLG", TRUE);
+define("VN_CACHE_ACTION_FLG", true);

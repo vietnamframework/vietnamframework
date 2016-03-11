@@ -4,15 +4,16 @@ function db_config($target)
     $param = array();
 
     $param[''] = array(
-        'dsn' => 'mysql:dbname=love;host=localhost', // PDO:db name;host
+        'dsn' => 'mysql:dbname=sakila;host=localhost', // PDO:db name;host
+        //'dsn' => 'mysql:dbname=love;host=localhost', // PDO:db name;host
         'username' => 'root', // user name of database
-        'password' => '',// password
+        'password' => '123456',// password
         'driver_options' => array(PDO::ATTR_PERSISTENT => false)
     );
     
 // postgress config    
 //     $param[''] = array(
-//         'dsn' => 'pgsql:dbname=nbk;host=localhost',
+//         'dsn' => 'pgsql:dbname=test;host=localhost',
 //         'username' => 'postgres',
 //         'password' => '123456',
 //         'driver_options' => array(PDO::ATTR_PERSISTENT => false)
@@ -20,7 +21,7 @@ function db_config($target)
 
 //    sql server config
 //     $param['sql_server'] = array(
-//         'dsn' => 'sqlsrv:server=HUNGBU-PC\SQLEXPRESS;database=tmpDB',
+//         'dsn' => 'sqlsrv:server=USER-PC\SQLEXPRESS;database=tmpDB',
 //         'username' => 'username',
 //         'password' => 'password',
 //         'driver_options' => array(PDO::ATTR_PERSISTENT => false)
@@ -28,7 +29,7 @@ function db_config($target)
     
 // will call diff database $param[$target];
 //     $param['diff_db'] = array(
-//         'dsn' => 'pgsql:dbname=cms_indd;host=192.168.1.1',
+//         'dsn' => 'pgsql:dbname=test;host=192.168.1.1',
 //         'username' => 'username',
 //         'password' => 'password',
 //         'driver_options' => array(PDO::ATTR_PERSISTENT => false)

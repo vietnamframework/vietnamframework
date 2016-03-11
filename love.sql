@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50627
 File Encoding         : 65001
 
-Date: 2016-01-07 16:45:42
+Date: 2016-03-11 09:35:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` int(11) NOT NULL,
   `lang_id` int(11) NOT NULL,
   `title` text,
@@ -37,6 +37,90 @@ CREATE TABLE `content` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for frontend_trans
+-- ----------------------------
+DROP TABLE IF EXISTS `frontend_trans`;
+CREATE TABLE `frontend_trans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` text,
+  `content` text,
+  `lang_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of frontend_trans
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for func_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `func_permission`;
+CREATE TABLE `func_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `func` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of func_permission
+-- ----------------------------
+INSERT INTO `func_permission` VALUES ('4', ' user/create', 'user create ');
+INSERT INTO `func_permission` VALUES ('5', ' news/create', 'news create ');
+
+-- ----------------------------
+-- Table structure for grand_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `grand_permission`;
+CREATE TABLE `grand_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `groupid` int(11) DEFAULT NULL,
+  `funcid` int(11) DEFAULT NULL,
+  `permission` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of grand_permission
+-- ----------------------------
+INSERT INTO `grand_permission` VALUES ('1', '2', '4', '1');
+INSERT INTO `grand_permission` VALUES ('2', '2', '5', '1');
+
+-- ----------------------------
+-- Table structure for group_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `group_permission`;
+CREATE TABLE `group_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `auth_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of group_permission
+-- ----------------------------
+INSERT INTO `group_permission` VALUES ('1', 'admin');
+INSERT INTO `group_permission` VALUES ('2', 'author');
+INSERT INTO `group_permission` VALUES ('3', 'user');
+
+-- ----------------------------
+-- Table structure for language
+-- ----------------------------
+DROP TABLE IF EXISTS `language`;
+CREATE TABLE `language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lang` varchar(255) DEFAULT NULL COMMENT 'language name',
+  `short_name` varchar(255) DEFAULT NULL COMMENT 'short name',
+  `flag` varchar(255) DEFAULT NULL COMMENT 'language flag',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of language
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for url_friendly
 -- ----------------------------
 DROP TABLE IF EXISTS `url_friendly`;
@@ -46,13 +130,14 @@ CREATE TABLE `url_friendly` (
   `controller` tinytext,
   `action` tinytext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of url_friendly
 -- ----------------------------
 INSERT INTO `url_friendly` VALUES ('1', 'hungbuit', 'news', 'index');
 INSERT INTO `url_friendly` VALUES ('2', 'hungbu', 'news', 'view');
+INSERT INTO `url_friendly` VALUES ('3', 'test', 'index', 'test');
 
 -- ----------------------------
 -- Table structure for user
@@ -62,7 +147,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` tinytext,
   `pass` text,
-  `create` datetime ,
+  `create` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 

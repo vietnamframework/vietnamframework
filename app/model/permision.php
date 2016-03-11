@@ -1,9 +1,9 @@
 <?php
 class Permision_model extends VNModel{
     //table user
-    protected $table = 'func';
+    protected $table = 'func_permission';
     
-    protected $table_group = 'group';
+    protected $table_group = 'group_permission';
     
     protected $table_grand = 'grand_permission';
     
