@@ -224,4 +224,17 @@ class Permision_model extends VNModel{
         }
     }
     
+    public function grand_update($param, $id) {
+        try {
+        $model = new VNModel();
+        $model->settable($this->table_grand);
+        $where = "id = :id";
+        $param_where = array('id' => $id);
+        return  $model->update($param, $where, $param_where);
+        } catch (Exception $e) {
+            VNLog::debug_var($this->log_name, "group_add " . $e->getMessage());
+            return false;
+        }
+    }
+    
 }

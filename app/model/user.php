@@ -88,6 +88,19 @@ class User_model extends VNModel{
     }
     
     /**
+     * Check login
+     * note: should customize
+     * @return boolean
+     */
+    public function checklogin() {
+        if(!empty($_SESSION['user_curent'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
      * create user
      * @todo make sql with data $user to :
      *  INSERT INTO table_name (column1, column2, column3,...)

@@ -4,22 +4,23 @@ class Permission_Controller extends Controller {
         
     }
     
-    public function update() {
-        $param = $this->get_param(array('id', 'groupid', 'module', 'permission'));
+    public function update_grand() {
         
-        $md_permission = new Permision_model();
-        
-        $param['groupid'] = 2;
-        $param['module'] = "news/update";
-        $param['permission'] = 0;
-        
-        $result = $md_permission->update_status($param, 2);
+        $param = $this->get_param(array('id', 'groupid', 'funcid', 'permission'));
+        $param = Validate::remove_empty($param);
         
         $message = "update false";
-        if($result == true) {
-            $message = "update true";
-        }
         
+        if(!empty($param['id'])) {
+            $md_permission = new Permision_model();
+    
+            $result = $md_permission->grand_update($param, $param['id']);
+            
+            
+            if($result == true) {
+                $message = "update true";
+            }
+        }
         echo $message; die;
     }
     
@@ -43,19 +44,17 @@ class Permission_Controller extends Controller {
         
     }
     
-    public function Createuser() {
-        $param = $this->get_param(array('user_name', 'pass'));
-        var_dump($param); die;
-    }
-    
+    /**
+     * permission scan
+     */
     public function permission_scan() {
+        
        $file  =new File_lib();
-       
        $md_permission = new Permision_model();
        $md_permission->permission_scaner(WEB_DIR."/app/controller", $file);
-       //WEB_DIR
        
-       die;
+       $result['status'] = 'OK';
+       return View::Json($result);
     }
     
 }

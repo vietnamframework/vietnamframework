@@ -50,4 +50,19 @@ class Validate {
         }
         return $text;
     }
+    
+    /**
+     * remove empty data
+     * @param array $param
+     */
+    public static function remove_empty($param) {
+        if(empty($param)) return null;
+        $data = array();
+        foreach ($param as $key => $value) {
+            if(!empty($value)) {
+                $data[$key] = $value;
+            }
+        }
+        return $data;
+    }
 }

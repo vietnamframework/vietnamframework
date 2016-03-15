@@ -44,7 +44,7 @@ class View
         }
     }
     
-    public function Json($data, $option, $depth) {
+    public static function Json($data, $option = '', $depth = '') {
         return json_encode($data, $option, $depth);
     }
     
