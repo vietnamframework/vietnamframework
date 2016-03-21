@@ -26,6 +26,7 @@ CREATE TABLE `content` (
   `title` text,
   `content` text,
   `tag` text,
+  `file_name` varchar(150) DEFAULT NULL,
   `authour_id` int(11) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
