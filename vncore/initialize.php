@@ -1,8 +1,9 @@
 <?php
-
+//Define
 require_once 'config/define.php';
-
+//Log
 require 'log.php';
+//Config
 require_once 'config/dbconfig.php';
 // Core
 require_once 'core.php';
@@ -16,6 +17,9 @@ require 'dbaccess.php';
 require 'model.php';
 // Controller
 require_once 'controller.php';
+// Backend Controller
+require_once 'backendcontroller.php';
+
 // Validate
 require_once 'validate.php';
 
@@ -26,11 +30,11 @@ require_once 'parseUserAgentString.php';
 // Array
 //require 'hbcore/Array.php';
 // Session
-//require 'hbcore/Session.php';
+require 'session.php';
 // Error
 //require 'hbcore/Error.php';
 
-//Session::init();	//session_start()
+Session::init();	//session_start()
 
 header('Expires: -1');
 header('Cache-Control:');

@@ -20,10 +20,31 @@ class View
             }
         }
         if ($custom === false) {
-            require "app/view/default/$path.php";
+            $template = View::getTemplate();
+            require "app/view/".$template."/$path.html";
         } else {
-            require "app/view/$custom/$path.php";
+            require "app/view/$custom/$path.html";
         }
+    }
+    
+    //public static
+    /**
+     * set Template
+     * @param string $template
+     * @return boolean
+     */
+    public static function setTemplate($template) {
+        Session::set('template', $template);
+        return true;
+    }
+    
+    /**
+     * getTemplate
+     * @return Ambigous <NULL, unknown>
+     */
+    public static function getTemplate() {
+        $template = Session::get('template');
+        return $template;
     }
     /**
      * add HTTP header to headers array
@@ -44,8 +65,8 @@ class View
         }
     }
     
-    public static function Json($data, $option = '', $depth = '') {
-        return json_encode($data, $option, $depth);
+    public static function Json($data) {
+        echo json_encode($data);
     }
     
     /**

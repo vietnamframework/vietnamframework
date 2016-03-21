@@ -1,6 +1,6 @@
 <?php
 class Controller extends View {
-    protected $param;
+    protected $param_main;
     
     /**
      * Construct
@@ -12,9 +12,7 @@ class Controller extends View {
     //}
     
     public function init() {
-        $tmp = $_REQUEST;
-        unset($tmp['hbaction']);
-        $this->param = $tmp;
+        
     }
     
     protected function loading() {
@@ -27,10 +25,10 @@ class Controller extends View {
      * @return array |NULL
      */
     public function get_param($arr) {
-        if(count($arr) > 0 && count($this->param) > 0) {
+        if(count($arr) > 0 && count($_REQUEST) > 0) {
             $arr_result = array();
             foreach ($arr as $key) {
-                foreach ($this->param as $key_p => $val_p) {
+                foreach ($_REQUEST as $key_p => $val_p) {
                     if($key == $key_p) {
                         $arr_result[$key] = $val_p;
                     }
@@ -49,7 +47,7 @@ class Controller extends View {
      * @param array $param
      */
     public function set_param($param) {
-        $this->param = $param;
+        $_REQUEST = $param;
     }
     
     public function main() {

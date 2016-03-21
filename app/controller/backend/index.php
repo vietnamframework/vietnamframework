@@ -1,12 +1,7 @@
 <?php
-class Index_Backend_Controller extends Controller {
+class Index_Backend_Controller extends Backend_Controller {
     public function index() {
-        
-        $model = new User_model();
-        //$tmp = $model->loveme();
-        //$this->addHeader(array('acd' =>$tmp));
-        //$data['a'] = $tmp;
-        //return $this->renderTemplate('index', $data);
+        return $this->renderTemplate('index');
     }
     
     public function Createuser() {
