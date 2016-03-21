@@ -23,7 +23,6 @@ require_once 'validate.php';
 require_once 'urlfiend.php';
 //Parse UserAgent String
 require_once 'parseUserAgentString.php';
-require_once 'parseUserAgentString_without_bots.php';
 // Array
 //require 'hbcore/Array.php';
 // Session
