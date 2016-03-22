@@ -19,7 +19,7 @@
      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroynews()">Remove news</a>
  </div>
  
- <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+ <div id="dlg" class="easyui-dialog" style="width:750px;height:480px;padding:10px 20px; display:none"
          closed="true" buttons="#dlg-buttons">
      <div class="ftitle">news Information</div>
      <form id="fm" method="post" novalidate>
@@ -33,7 +33,8 @@
          </div>
          <div class="fitem">
              <label>Content:</label>
-             <input name="content" class="easyui-textbox" required="true">
+             <!-- <input name="content" class="easyui-textbox" required="true"> -->
+             <input name="content" class="easyui-textbox" data-options="multiline:true" style="width:300px;height:100px"> 
          </div>
          <div class="fitem">
              <label>File Name:</label>
