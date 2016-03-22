@@ -21,9 +21,13 @@ class View
         }
         if ($custom === false) {
             $template = View::getTemplate();
+            require "app/view/".$template."/before.html";
             require "app/view/".$template."/$path.html";
+            require "app/view/".$template."/after.html";
         } else {
+            require "app/view/$custom/before.html";
             require "app/view/$custom/$path.html";
+            require "app/view/$custom/after.html";
         }
     }
     

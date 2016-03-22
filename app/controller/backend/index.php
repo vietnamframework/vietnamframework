@@ -4,10 +4,9 @@ class Index_Backend_Controller extends Backend_Controller {
         return $this->renderTemplate('index');
     }
     
-    public function Createuser() {
-        $param = $this->get_param(array('user_name', 'pass'));
-        var_dump($param); die;
-    }
+    public function User() {
+        return $this->renderTemplate('user');
+    } 
     
     public function test() {
         $mdtest = new User_model();

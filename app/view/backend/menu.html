@@ -1,0 +1,71 @@
+
+<table id="dg" title="My menus" class="easyui-datagrid" style="width:100%;height:450px"
+         url="<?php echo Core::base_url().'menu_backend/listdata';?>"
+         toolbar="#toolbar" pagination="true"
+         rownumbers="true" fitColumns="true" singleSelect="true">
+     <thead>
+         <tr>
+             <th field="title" width="50">Title</th>
+             <th field="link" width="50">Link</th>
+             <th field="status" width="50">Status</th>
+             <th field="parent" width="50">Parent</th>
+         </tr>
+     </thead>
+ </table>
+ <div id="toolbar">
+     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newmenu()">New Menu</a>
+     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editmenu()">Edit Menu</a>
+     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroymenu()">Remove Menu</a>
+ </div>
+ 
+ <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+         closed="true" buttons="#dlg-buttons">
+     <div class="ftitle">menu Information</div>
+     <form id="fm" method="post" novalidate>
+         <div class="fitem">
+             <label>Title:</label>
+             <input name="title" class="easyui-textbox" required="true">
+         </div>
+         <div class="fitem">
+             <label>Link:</label>
+             <input name="link" class="easyui-textbox" required="true">
+         </div>
+         <div class="fitem">
+             <label>status:</label>
+             <input name="status" class="easyui-textbox" >
+         </div>
+         <div class="fitem">
+             <label>parent:</label>
+             <input name="parent" class="easyui-textbox">
+         </div>
+     </form>
+ </div>
+ <div id="dlg-buttons">
+     <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="savemenu()" style="width:90px">Save</a>
+     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+ </div>
+
+ <style type="text/css">
+     #fm{
+         margin:0;
+         padding:10px 30px;
+     }
+     .ftitle{
+         font-size:14px;
+         font-weight:bold;
+         padding:5px 0;
+         margin-bottom:10px;
+         border-bottom:1px solid #ccc;
+     }
+     .fitem{
+         margin-bottom:5px;
+     }
+     .fitem label{
+         display:inline-block;
+         width:80px;
+     }
+     .fitem input{
+         width:160px;
+     }
+ </style>
+<script src="<?php echo Core::base_url(); ?>app/view/backend/js/menu.js"></script>

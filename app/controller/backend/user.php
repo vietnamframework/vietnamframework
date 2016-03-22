@@ -2,7 +2,7 @@
 class User_Backend_Controller extends Backend_Controller {
     
     public function Index() {
-        return $this->renderTemplate('login');
+        return $this->renderTemplate('user');
     }
     /**
      * create news
