@@ -52,4 +52,20 @@ var url;
              });
          }
      }
-     
+     bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+// $(document).ready(function(){
+//		var myNicEditor = new nicEditor({fullPanel : true, maxHeight : 700, uploadURI : url_base + '/admin/content/upload'});
+//
+//		bkLib.onDomLoaded(function(){
+//				 myInstance = myNicEditor.panelInstance('content_content');
+//				$("#getcontent").click(function(){
+//					alert(nicEditors.findEditor('content_content').getContent());
+//					return false;
+//				});
+//		});
+		
+//		$("#submit").click(function(){
+//			$(".content_editor").html(nicEditors.findEditor('content_content').getContent());
+//			return true;
+//		});
+// });

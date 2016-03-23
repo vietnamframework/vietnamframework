@@ -31,10 +31,12 @@
              <label>Title:</label>
              <input name="title" class="easyui-textbox" required="true">
          </div>
+
          <div class="fitem">
              <label>Content:</label>
-             <!-- <input name="content" class="easyui-textbox" required="true"> -->
-             <input name="content" class="easyui-textbox" data-options="multiline:true" style="width:300px;height:100px"> 
+             <!--<input name="content" class="easyui-textbox" required="true">-->
+             <!-- <input name="content" class="easyui-textbox" data-options="multiline:true" style="width:300px;height:100px"> -->
+			<textarea id="content_content"  name="content" type="text"  cols="70" class="content_editor " style="width:500px;"></textarea>
          </div>
          <div class="fitem">
              <label>File Name:</label>
@@ -74,4 +76,5 @@
          width:160px;
      }
  </style>
+<script src="<?php echo Core::base_url(); ?>app/view/backend/niceditor/nicedit.js"></script>
 <script src="<?php echo Core::base_url(); ?>app/view/backend/js/news.js"></script>
