@@ -9,9 +9,8 @@ class News_Backend_Controller extends Backend_Controller {
      * @permission news/create|news create @end_permission
      */
     public function Create() {
-        $param = $this->get_param(array('lang_id', 'title', 'content', 'file_name', 'tag'));
-        
-        VNLog::debug_var('hungbuit_123', $param);
+        VNLog::debug_var("hhhhhhhhh", $_FILES);
+        $param = $this->get_param(array('lang_id', 'title', 'content', 'category_id', 'file_name', 'tag'));
         
         $param['authour_id'] = 1;
         
@@ -40,7 +39,7 @@ class News_Backend_Controller extends Backend_Controller {
      * @permission news/update|Update news @end_permission
      */
     public function Update() {
-        $param = $this->get_param(array('lang_id', 'title', 'content', 'file_name', 'tag', 'id'));
+        $param = $this->get_param(array('lang_id', 'title', 'content', 'category_id', 'file_name', 'tag', 'id'));
         $result['errorMsg'] = '';
         if(!empty($param['id'])) {
             $id = $param['id'];
@@ -63,10 +62,13 @@ class News_Backend_Controller extends Backend_Controller {
                 $data['file_name'] = $param['file_name'];
             }
             
+            if($param['category_id'] != '') {
+                $data['category_id'] = $param['category_id'];
+            }
+            
             if($param['tag'] != '') {
                 $data['tag'] = $param['tag'];
             }
-            
             $news_model = new news_model();
             if($news_model->update_news($data, $id) != true) {
                 $result['errorMsg'] = "Have an error, please contact your admin";
@@ -96,4 +98,49 @@ class News_Backend_Controller extends Backend_Controller {
         
         return View::Json($result);
     }
+    
+    /**
+     * upload image action
+     * @return string|NULL
+     */
+    public function Upload() {
+        if($_FILES['image']['error'] == '0') {
+            $tmp_name = $_FILES['image']['tmp_name'];
+            $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $file_name = pathinfo($_FILES['image']['name'],PATHINFO_FILENAME);
+            $file_name_return = $file_name."_".uniqid().".".$ext;
+            $new_name = VN_FILEUPLOAD_DIR.$file_name_return;
+
+            if(move_uploaded_file($tmp_name,$new_name) === true) {
+                
+                $upload['image']['name'] = $file_name_return;
+                $upload['image']['title'] = $file_name;
+                $upload['image']['caption'] = '';
+                $upload['image']['hash'] = "h598GD2";
+                $upload['image']['deletehash'] = "nyhakfx5HLAI2Gv";
+                $upload['image']['datetime'] = date('Y-m-d H:i:s');
+                $upload['image']['type'] = $_FILES["image"]["type"];
+                $upload['image']['animated'] = "false";
+                // 				$upload['image']['width'] = "200";
+                // 				$upload['image']['height'] = "200";
+                $upload['image']['views'] = 0;
+                $upload['image']['size'] = $_FILES["image"]["size"];
+                $upload['image']['bandwidth'] = 0;
+                
+                $upload['links']['original'] = Core::base_url()."file_upload/".$file_name_return;
+                $upload['links']['imgur_page'] = '';
+                $upload['links']['delete_page'] = '';
+                $upload['links']['small_square'] = '';
+                $upload['links']['large_thumbnail'] = '';
+                
+                echo json_encode(array('upload' => $upload));
+                return true;
+            } else {
+                return null;
+            }
+
+        }
+        return null;
+    }
+
 }

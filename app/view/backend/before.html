@@ -33,15 +33,15 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="<?php echo Core::base_url(); ?>app/view/backend/dist/js/html5shiv.min.js"></script>
+        <script src="<?php echo Core::base_url(); ?>app/view/backend/dist/js/respond.min.js"></script>
     <![endif]-->
   <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
   
   <!-- jQuery 2.1.4 -->
     <script src="<?php echo Core::base_url(); ?>app/view/backend/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="<?php echo Core::base_url(); ?>app/view/backend/dist/js/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -57,7 +57,7 @@
     <!-- jQuery Knob Chart -->
     <script src="<?php echo Core::base_url(); ?>app/view/backend/plugins/knob/jquery.knob.js"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="<?php echo Core::base_url(); ?>app/view/backend/dist/js/moment.min.js"></script>
     <script src="<?php echo Core::base_url(); ?>app/view/backend/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
     <script src="<?php echo Core::base_url(); ?>app/view/backend/plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -320,10 +320,6 @@
                   </li>
                 </ul>
               </li>
-              <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
             </ul>
           </div>
         </nav>
@@ -355,6 +351,9 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
+            <li class="users_mn"><a href="user_backend"><i class="fa fa-book"></i> <span>Users</span></a></li>
+            <li><a href="category_backend"><i class="fa fa-book"></i> <span>Category</span></a></li>
+            <li><a href="news_backend"><i class="fa fa-book"></i> <span>News</span></a></li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-gears"></i> <span>System Config</span> <i class="fa fa-angle-left pull-right"></i>
@@ -364,12 +363,9 @@
                 <li class=""><a href="menu_backend"><i class="fa fa-circle-o"></i>Menu</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Translate</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Permission</a></li>
+                <li><a href="language_backend"><i class="fa fa-circle-o"></i>Language</a></li>
               </ul>
             </li>
-            <li class="users_mn"><a href="user_backend"><i class="fa fa-book"></i> <span>Users</span></a></li>
-            <li><a href="category_backend"><i class="fa fa-book"></i> <span>Category</span></a></li>
-            <li><a href="news_backend"><i class="fa fa-book"></i> <span>News</span></a></li>
-            
           </ul>
         </section>
         <!-- /.sidebar -->

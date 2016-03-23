@@ -26,7 +26,8 @@
          </div>
          <div class="fitem">
              <label>parent:</label>
-             <input name="parent" class="easyui-textbox">
+             <input id="cc" class="easyui-combobox" name="parent"
+    data-options="valueField:'id',textField:'category_name',url:'<?php echo Core::base_url().'category_backend/listdata';?>'" >
          </div>
      </form>
  </div>

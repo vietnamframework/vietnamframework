@@ -2,20 +2,24 @@ var url;
      function newnews(){
          $('#dlg').dialog('open').dialog('center').dialog('setTitle','New News');
          $('#fm').form('clear');
+         nicEditors.findEditor('content_content').setContent('');
          url = url_base+'news_backend/create';
      }
      function editnews(){
          var row = $('#dg').datagrid('getSelected');
          if (row){
              $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit News');
+             nicEditors.findEditor('content_content').setContent(row.content);
              $('#fm').form('load',row);
              url = url_base+'news_backend/update?id='+row.id;
          }
      }
      function savenews(){
+    	 $("#fm #real_content").val(nicEditors.findEditor('content_content').getContent());
          $('#fm').form('submit',{
              url: url,
              onSubmit: function(){
+            	 
                  return $(this).form('validate');
              },
              success: function(result){
@@ -52,7 +56,14 @@ var url;
              });
          }
      }
-     bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+     
+     
+    var myNicEditor = new nicEditor({fullPanel : true, maxHeight : 700, uploadURI : url_base + 'news_backend/upload'});
+
+ 	bkLib.onDomLoaded(function(){
+ 		myInstance = myNicEditor.panelInstance('content_content');
+ 	});
+     //bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 // $(document).ready(function(){
 //		var myNicEditor = new nicEditor({fullPanel : true, maxHeight : 700, uploadURI : url_base + '/admin/content/upload'});
 //

@@ -6,6 +6,7 @@
      <thead>
          <tr>
 	         <th field="lang_id" width="50">Language</th>
+	         <th field="category_id" width="50">Category</th>
 	         <th field="title" width="50">Title</th>
              <th field="content" width="50">Content</th>
              <th field="file_name" width="50">File Name</th>
@@ -19,14 +20,22 @@
      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroynews()">Remove news</a>
  </div>
  
- <div id="dlg" class="easyui-dialog" style="width:750px;height:480px;padding:10px 20px; display:none"
+ <div id="dlg" class="easyui-dialog" style="width:1028px;height:650px;padding:10px 20px; display:none"
          closed="true" buttons="#dlg-buttons">
      <div class="ftitle">news Information</div>
      <form id="fm" method="post" novalidate>
      	<div class="fitem">
              <label>Language:</label>
-             <input name="lang_id" class="easyui-textbox" required="true">
+             <input id="cc" class="easyui-combobox" name="lang_id"
+    data-options="valueField:'id',textField:'lang',url:'<?php echo Core::base_url().'language_backend/listdata';?>'" required="true">
          </div>
+         <div class="fitem">
+             <label>Category:</label>
+    <input id="cc" class="easyui-combobox" name="category_id"
+    data-options="valueField:'id',textField:'category_name',url:'<?php echo Core::base_url().'category_backend/listdata';?>'" >
+         </div>
+         
+         
          <div class="fitem">
              <label>Title:</label>
              <input name="title" class="easyui-textbox" required="true">
@@ -34,13 +43,13 @@
 
          <div class="fitem">
              <label>Content:</label>
-             <!--<input name="content" class="easyui-textbox" required="true">-->
-             <!-- <input name="content" class="easyui-textbox" data-options="multiline:true" style="width:300px;height:100px"> -->
-			<textarea id="content_content"  name="content" type="text"  cols="70" class="content_editor " style="width:500px;"></textarea>
+             <input id="real_content" name="content" type="hidden" >
+			 <textarea id="content_content" type="text"  cols="70" class="content_editor" style="width:950px;min-height:200px;height:200px;"></textarea>
          </div>
          <div class="fitem">
              <label>File Name:</label>
              <input name="file_name" class="easyui-textbox" >
+             <input class="easyui-filebox" name="file1" data-options="prompt:'Choose a file...'" >
          </div>
          <div class="fitem">
              <label>Tags:</label>
