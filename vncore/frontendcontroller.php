@@ -4,7 +4,7 @@ class Frontend_Controller extends Controller {
     
     public function init() {
         // set default template
-        Session::set('template', 'default');
+        Session::set('template', 'newstreecolumn');
     }
 
 }
