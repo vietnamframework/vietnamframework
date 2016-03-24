@@ -2,15 +2,28 @@
 class Slide_Backend_Controller extends Backend_Controller {
     
     public function Index() {
-        return $this->renderTemplate('slide');
+        $Taxonomy_model = new Taxonomy_model();
+        $data_taxonomy = $Taxonomy_model->get_list_taxonomy();
+        $data['taxonomy'] = json_encode($data_taxonomy);
+        return $this->renderTemplate('slide', $data);
     }
     /**
      * create news
      * @permission slide/create|slide create @end_permission
      */
     public function Create() {
-        $param = $this->get_param(array('title', 'content', 'image', 'sub_image', 'taxonomy_id'));
+        $param = $this->get_param(array('title', 'content', 'taxonomy_id'));
 
+        if(isset($_FILES) && !empty($_FILES) && $_FILES['file1']['error'] == '0') {
+            $upload = new Upload_Backend_Controller();
+            $param['image'] = $upload->uploadLocation('file1');
+        }
+        
+        if(isset($_FILES) && !empty($_FILES) && $_FILES['file2']['error'] == '0') {
+            $upload = new Upload_Backend_Controller();
+            $param['sub_image'] = $upload->uploadLocation('file2');
+        }
+        
         if(empty($param['status'])) {
             unset($param['status']);
         }
@@ -21,7 +34,7 @@ class Slide_Backend_Controller extends Backend_Controller {
         
         $result['errorMsg'] = '';
         $slide_model = new Slide_model();
-        
+
         if($slide_model->create_slide($param) != true) {
             $result['errorMsg'] = "Have an error, please contact your admin";
         }
@@ -62,6 +75,16 @@ class Slide_Backend_Controller extends Backend_Controller {
             $id = $param['id'];
             $data = array();
             
+            if(isset($_FILES) && !empty($_FILES) && $_FILES['file1']['error'] == '0') {
+                $upload = new Upload_Backend_Controller();
+                $param['image'] = $upload->uploadLocation('file1');
+            }
+            
+            if(isset($_FILES) && !empty($_FILES) && $_FILES['file2']['error'] == '0') {
+                $upload = new Upload_Backend_Controller();
+                $param['sub_image'] = $upload->uploadLocation('file2');
+            }
+            
             // update data
             if($param['title'] != '') {
                 $data['title'] = $param['title'];
@@ -82,7 +105,7 @@ class Slide_Backend_Controller extends Backend_Controller {
             if($param['taxonomy_id'] != '') {
                 $data['taxonomy_id'] = $param['taxonomy_id'];
             }
-            
+
             $slide_model = new Slide_model();
             if($slide_model->update_slide($data, $id) != true) {
                 $result['errorMsg'] = "Have an error, please contact your admin";

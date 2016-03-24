@@ -1,4 +1,5 @@
 var url;
+var translate = false;
      function newnews(){
          $('#dlg').dialog('open').dialog('center').dialog('setTitle','New News');
          $('#fm').form('clear');
@@ -10,11 +11,24 @@ var url;
          if (row){
              $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit News');
              nicEditors.findEditor('content_content').setContent(row.content);
+             row.file = '';
              $('#fm').form('load',row);
              url = url_base+'news_backend/update?id='+row.id;
          }
      }
+     function transnews(){
+    	 translate = true;
+         var row = $('#dg').datagrid('getSelected');
+         if (row){
+             $('#dlg').dialog('open').dialog('center').dialog('setTitle','Trans News');
+             nicEditors.findEditor('content_content').setContent(row.content);
+             row.file = '';
+             $('#fm').form('load',row);
+             url = url_base+'news_backend/create';
+         }
+     }
      function savenews(){
+    	 
     	 $("#fm #real_content").val(nicEditors.findEditor('content_content').getContent());
          $('#fm').form('submit',{
              url: url,
@@ -31,11 +45,13 @@ var url;
                          msg: result.errorMsg
                      });
                  } else {
+                	 
                      $('#dlg').dialog('close');        // close the dialog
                      $('#dg').datagrid('reload');    // reload the news data
                  }
              }
          });
+         translate = false;
      }
      function destroynews(){
          var row = $('#dg').datagrid('getSelected');
@@ -80,3 +96,25 @@ var url;
 //			return true;
 //		});
 // });
+
+ 	
+ 	$(document).ready(function(){
+ 		$("#avata_upload").click(function(){
+
+ 	        var filename = $("#file_name").val();
+ 	        $.ajax({
+ 	            type: "POST",
+ 	            url: url_base+"upload_backend",
+ 	            enctype: 'multipart/form-data',
+ 	            data: {
+ 	                file: filename
+ 	            },
+ 	            success: function (data) {
+ 	            	console.log(data);
+ 	                alert("Data Uploaded: ");
+ 	            }
+ 	        });
+ 	    });
+ 	});
+
+ 	

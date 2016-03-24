@@ -1,4 +1,27 @@
+<script>
 
+var taxonomy_data = <?php echo $data['taxonomy']; ?>;
+
+window.return_taxonomy_name = function(value) {
+	if(value == '' || isNaN(parseInt(value))) return null;
+	
+	$.each(taxonomy_data, function(i, item) {
+		/*
+		console.log(item);
+		console.log(parseInt(item.id));
+		console.log(value);
+		console.log(parseInt(value));
+		*/
+	    if(parseInt(item.id) === parseInt(value)) {
+	    	value = item.taxonomy_name;
+	    	return value;
+	    }
+	  });
+	return value;
+};
+
+
+</script>
 <table id="dg" title="My slides" class="easyui-datagrid" style="width:100%;height:450px"
          url="<?php echo Core::base_url().'slide_backend/listdata';?>"
          toolbar="#toolbar" pagination="true"
@@ -9,7 +32,11 @@
              <th field="content" width="50">Content</th>
              <th field="image" width="50">Image</th>
              <th field="sub_image" width="50">Sub Image</th>
-             <th field="taxonomy_id" width="50">Taxonomy</th>
+             <th data-options="field:'taxonomy_id',
+	             formatter: function(value,row,index){
+	             	return return_taxonomy_name(value);
+				}" 
+              width="50">Taxonomy</th>
          </tr>
      </thead>
  </table>
@@ -19,10 +46,10 @@
      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyslide()">Remove Slide</a>
  </div>
  
- <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px;display:none"
+ <div id="dlg" class="easyui-dialog" style="width:700px;height:480px;padding:10px 20px;display:none"
          closed="true" buttons="#dlg-buttons">
      <div class="ftitle">slide Information</div>
-     <form id="fm" method="post" novalidate>
+     <form id="fm" method="post" novalidate enctype="multipart/form-data">
          <div class="fitem">
              <label>Title:</label>
              <input name="title" class="easyui-textbox" >
@@ -34,15 +61,17 @@
          <div class="fitem">
              <label>Image:</label>
              <input name="image" class="easyui-textbox" required="true">
+             <input class="easyui-filebox" name="file1" data-options="prompt:'Choose a file...'" style="width:150px">
          </div>
          <div class="fitem">
              <label>Sub Image:</label>
              <input name="sub_image" class="easyui-textbox" >
+             <input class="easyui-filebox" name="file2" data-options="prompt:'Choose a file...'" style="width:150px">
          </div>
          <div class="fitem">
              <label>Taxonomy:</label>
              <input id="cc" class="easyui-combobox" name="taxonomy_id" required="true"
-    data-options="valueField:'id',textField:'title',url:'<?php echo Core::base_url().'taxonomy_backend/listdata';?>'" >
+    data-options="valueField:'id',textField:'taxonomy_name',url:'<?php echo Core::base_url().'taxonomy_backend/listdata';?>'" >
          </div>
      </form>
  </div>

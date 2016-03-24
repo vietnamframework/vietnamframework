@@ -2,15 +2,30 @@
 class News_Backend_Controller extends Backend_Controller {
     
     public function Index() {
-        return $this->renderTemplate('news');
+        $ctg_model = new Category_model();
+        $data_category = $ctg_model->get_list_category();
+        $data['category'] = json_encode($data_category);
+        
+        $language_model = new Language_model();
+        $data_language = $language_model->get_list_language();
+        $data['language'] = json_encode($data_language);
+        return $this->renderTemplate('news', $data);
     }
     /**
      * create news
      * @permission news/create|news create @end_permission
      */
     public function Create() {
-        VNLog::debug_var("hhhhhhhhh", $_FILES);
-        $param = $this->get_param(array('lang_id', 'title', 'content', 'category_id', 'file_name', 'tag'));
+        
+        $param = $this->get_param(array('lang_id', 'key', 'title', 'content', 'file_name', 'category_id', 'tag'));
+        
+        if(isset($_FILES) && !empty($_FILES) && $_FILES['file']['error'] == '0') {
+            $upload = new Upload_Backend_Controller();
+            $param['file_name'] = $upload->uploadLocation('file');
+        }
+        if($param['key'] == '') {
+            $param['key'] = uniqid();
+        }
         
         $param['authour_id'] = 1;
         
@@ -45,32 +60,37 @@ class News_Backend_Controller extends Backend_Controller {
             $id = $param['id'];
             $data = array();
             
+            if(isset($_FILES) && !empty($_FILES) && $_FILES['file']['error'] == '0') {
+                $upload = new Upload_Backend_Controller();
+                $param['file_name'] = $upload->uploadLocation('file');
+            }
+            
             // update data
-            if($param['lang_id'] != '') {
-                $data['lang_id'] = $param['lang_id'];
-            }
+//             if($param['lang_id'] != '') {
+//                 $data['lang_id'] = $param['lang_id'];
+//             }
             
-            if($param['title'] != '') {
-                $data['title'] = $param['title'];
-            }
+//             if($param['title'] != '') {
+//                 $data['title'] = $param['title'];
+//             }
             
-            if($param['content'] != '') {
-                $data['content'] = $param['content'];
-            }
+//             if($param['content'] != '') {
+//                 $data['content'] = $param['content'];
+//             }
             
-            if($param['file_name'] != '') {
-                $data['file_name'] = $param['file_name'];
-            }
+//             if($param['file_name'] != '') {
+//                 $data['file_name'] = $param['file_name'];
+//             }
             
-            if($param['category_id'] != '') {
-                $data['category_id'] = $param['category_id'];
-            }
+//             if($param['category_id'] != '') {
+//                 $data['category_id'] = $param['category_id'];
+//             }
             
-            if($param['tag'] != '') {
-                $data['tag'] = $param['tag'];
-            }
+//             if($param['tag'] != '') {
+//                 $data['tag'] = $param['tag'];
+//             }
             $news_model = new news_model();
-            if($news_model->update_news($data, $id) != true) {
+            if($news_model->update_news($param, $id) != true) {
                 $result['errorMsg'] = "Have an error, please contact your admin";
             }
         }
