@@ -2,20 +2,21 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50617
+Source Server Version : 100110
 Source Host           : localhost:3306
 Source Database       : love
 
 Target Server Type    : MYSQL
-Target Server Version : 50617
+Target Server Version : 100110
 File Encoding         : 65001
 
-Date: 2016-03-24 01:56:47
+Date: 2016-03-24 16:06:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for `category`
+-- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
@@ -28,11 +29,11 @@ CREATE TABLE `category` (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO category VALUES ('1', 'hame', '0');
-INSERT INTO category VALUES ('2', 'category2', '1');
+INSERT INTO `category` VALUES ('1', 'hame', '0');
+INSERT INTO `category` VALUES ('2', 'category2', '1');
 
 -- ----------------------------
--- Table structure for `content`
+-- Table structure for content
 -- ----------------------------
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE `content` (
@@ -53,14 +54,14 @@ CREATE TABLE `content` (
 -- ----------------------------
 -- Records of content
 -- ----------------------------
-INSERT INTO content VALUES ('1', '0', '1', 'hÃ³t news', 'sexy dance', '2', 'hoahong.jpg', 'dalat#dkdfhd#', '1', null, null);
-INSERT INTO content VALUES ('2', '0', '0', 'dfdfdfd', 'sdfsdfdf', '1', 'fd', 'fdfdf', '1', null, null);
-INSERT INTO content VALUES ('3', '0', '0', 'dfd', 'see you again', null, 'fdf', 'dfdfdfdf', '1', null, null);
-INSERT INTO content VALUES ('4', '0', '1', 'dfdsf', '<b><font face=\"courier new\">see you again</font></b><div>fasdfasdfa</div><div>sdf</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div><img src=\"http://localhost/vietnamframework/file_upload/katagana_56f2d51803cd8.png\"><br></div><div>Ã¡d</div><div>fa</div><div>sd</div><div>fa</div><div>sdf</div><div>a</div><div>sdf</div><div>a</div><div>sdf</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>fa</div><div>sd</div><div style=\"text-align: center;\">fa</div><div style=\"text-align: center;\">sd</div><div style=\"text-align: center;\">fa</div><div style=\"text-align: center;\">sdf</div><div style=\"text-align: center;\">a</div><div style=\"text-align: center;\">sdf</div><div>Ã¡</div><div>df</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div>Ã¡df</div>', null, 'fsdfsd', 'fsdf', '1', null, null);
-INSERT INTO content VALUES ('5', '0', '1', 'fdfdfd', 'fdfdfdf', '1', 'dfdfdfd', 'fdsf', '1', null, null);
+INSERT INTO `content` VALUES ('1', '0', '1', 'hÃ³t news', 'sexy dance', '2', 'hoahong.jpg', 'dalat#dkdfhd#', '1', null, null);
+INSERT INTO `content` VALUES ('2', '0', '0', 'dfdfdfd', 'sdfsdfdf', '1', 'fd', 'fdfdf', '1', null, null);
+INSERT INTO `content` VALUES ('3', '0', '0', 'dfd', 'see you again', null, 'fdf', 'dfdfdfdf', '1', null, null);
+INSERT INTO `content` VALUES ('4', '0', '1', 'dfdsf', '<b><font face=\"courier new\">see you again</font></b><div>fasdfasdfa</div><div>sdf</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div><img src=\"http://localhost/vietnamframework/file_upload/katagana_56f2d51803cd8.png\"><br></div><div>Ã¡d</div><div>fa</div><div>sd</div><div>fa</div><div>sdf</div><div>a</div><div>sdf</div><div>a</div><div>sdf</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>fa</div><div>sd</div><div style=\"text-align: center;\">fa</div><div style=\"text-align: center;\">sd</div><div style=\"text-align: center;\">fa</div><div style=\"text-align: center;\">sdf</div><div style=\"text-align: center;\">a</div><div style=\"text-align: center;\">sdf</div><div>Ã¡</div><div>df</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div>Ã¡d</div><div>f</div><div>Ã¡df</div>', null, 'fsdfsd', 'fsdf', '1', null, null);
+INSERT INTO `content` VALUES ('5', '0', '1', 'fdfdfd', 'fdfdfdf', '1', 'dfdfdfd', 'fdsf', '1', null, null);
 
 -- ----------------------------
--- Table structure for `download_structure`
+-- Table structure for download_structure
 -- ----------------------------
 DROP TABLE IF EXISTS `download_structure`;
 CREATE TABLE `download_structure` (
@@ -78,7 +79,7 @@ CREATE TABLE `download_structure` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `frontend_trans`
+-- Table structure for frontend_trans
 -- ----------------------------
 DROP TABLE IF EXISTS `frontend_trans`;
 CREATE TABLE `frontend_trans` (
@@ -94,7 +95,7 @@ CREATE TABLE `frontend_trans` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `func_permission`
+-- Table structure for func_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `func_permission`;
 CREATE TABLE `func_permission` (
@@ -107,11 +108,11 @@ CREATE TABLE `func_permission` (
 -- ----------------------------
 -- Records of func_permission
 -- ----------------------------
-INSERT INTO func_permission VALUES ('4', ' user/create', 'user create ');
-INSERT INTO func_permission VALUES ('5', ' news/create', 'news create ');
+INSERT INTO `func_permission` VALUES ('4', ' user/create', 'user create ');
+INSERT INTO `func_permission` VALUES ('5', ' news/create', 'news create ');
 
 -- ----------------------------
--- Table structure for `grand_permission`
+-- Table structure for grand_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `grand_permission`;
 CREATE TABLE `grand_permission` (
@@ -125,11 +126,11 @@ CREATE TABLE `grand_permission` (
 -- ----------------------------
 -- Records of grand_permission
 -- ----------------------------
-INSERT INTO grand_permission VALUES ('1', '2', '4', '1');
-INSERT INTO grand_permission VALUES ('2', '2', '5', '1');
+INSERT INTO `grand_permission` VALUES ('1', '2', '4', '1');
+INSERT INTO `grand_permission` VALUES ('2', '2', '5', '1');
 
 -- ----------------------------
--- Table structure for `group_permission`
+-- Table structure for group_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `group_permission`;
 CREATE TABLE `group_permission` (
@@ -141,12 +142,12 @@ CREATE TABLE `group_permission` (
 -- ----------------------------
 -- Records of group_permission
 -- ----------------------------
-INSERT INTO group_permission VALUES ('1', 'admin');
-INSERT INTO group_permission VALUES ('2', 'author');
-INSERT INTO group_permission VALUES ('3', 'user');
+INSERT INTO `group_permission` VALUES ('1', 'admin');
+INSERT INTO `group_permission` VALUES ('2', 'author');
+INSERT INTO `group_permission` VALUES ('3', 'user');
 
 -- ----------------------------
--- Table structure for `language`
+-- Table structure for language
 -- ----------------------------
 DROP TABLE IF EXISTS `language`;
 CREATE TABLE `language` (
@@ -160,11 +161,11 @@ CREATE TABLE `language` (
 -- ----------------------------
 -- Records of language
 -- ----------------------------
-INSERT INTO language VALUES ('1', 'Viá»‡t Nam', 'vn', 'chÆ°a cÃ³');
-INSERT INTO language VALUES ('2', 'English', 'en', 'chÆ°a cÃ³ ');
+INSERT INTO `language` VALUES ('1', 'Viá»‡t Nam', 'vn', 'chÆ°a cÃ³');
+INSERT INTO `language` VALUES ('2', 'English', 'en', 'chÆ°a cÃ³ ');
 
 -- ----------------------------
--- Table structure for `menu`
+-- Table structure for menu
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
@@ -179,12 +180,46 @@ CREATE TABLE `menu` (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO menu VALUES ('1', 'HOme', 'index', '1', '0');
-INSERT INTO menu VALUES ('2', 'tes2', 'user', '1', '0');
-INSERT INTO menu VALUES ('3', 'tesst3', 'menu', '1', '0');
+INSERT INTO `menu` VALUES ('1', 'HOme', 'index', '1', '0');
+INSERT INTO `menu` VALUES ('2', 'tes2', 'user', '1', '0');
+INSERT INTO `menu` VALUES ('3', 'tesst3', 'menu', '1', '0');
 
 -- ----------------------------
--- Table structure for `url_friendly`
+-- Table structure for slide
+-- ----------------------------
+DROP TABLE IF EXISTS `slide`;
+CREATE TABLE `slide` (
+  `id` int(11) NOT NULL,
+  `title` text,
+  `content` text,
+  `image` varchar(255) DEFAULT NULL,
+  `sub_image` varchar(255) DEFAULT NULL,
+  `taxonomy_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of slide
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for taxonomy
+-- ----------------------------
+DROP TABLE IF EXISTS `taxonomy`;
+CREATE TABLE `taxonomy` (
+  `id` int(11) NOT NULL,
+  `taxonomy_name` text,
+  `type` varchar(255) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of taxonomy
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for url_friendly
 -- ----------------------------
 DROP TABLE IF EXISTS `url_friendly`;
 CREATE TABLE `url_friendly` (
@@ -198,12 +233,12 @@ CREATE TABLE `url_friendly` (
 -- ----------------------------
 -- Records of url_friendly
 -- ----------------------------
-INSERT INTO url_friendly VALUES ('1', 'hungbuit', 'news', 'index');
-INSERT INTO url_friendly VALUES ('2', 'hungbu', 'news', 'view');
-INSERT INTO url_friendly VALUES ('3', 'test', 'index', 'test');
+INSERT INTO `url_friendly` VALUES ('1', 'hungbuit', 'news', 'index');
+INSERT INTO `url_friendly` VALUES ('2', 'hungbu', 'news', 'view');
+INSERT INTO `url_friendly` VALUES ('3', 'test', 'index', 'test');
 
 -- ----------------------------
--- Table structure for `user`
+-- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -218,6 +253,6 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO user VALUES ('1', 'admin', '123456', null, '2015-10-20 11:40:01');
-INSERT INTO user VALUES ('2', 'hungbu', '202cb962ac59075b964b07152d234b70', null, '2015-10-28 09:25:49');
-INSERT INTO user VALUES ('3', 'hungbuit', '202cb962ac59075b964b07152d234b70', null, '2015-10-28 09:29:21');
+INSERT INTO `user` VALUES ('1', 'admin', '123456', null, '2015-10-20 11:40:01');
+INSERT INTO `user` VALUES ('2', 'hungbu', '202cb962ac59075b964b07152d234b70', null, '2015-10-28 09:25:49');
+INSERT INTO `user` VALUES ('3', 'hungbuit', '202cb962ac59075b964b07152d234b70', null, '2015-10-28 09:29:21');
