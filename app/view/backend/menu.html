@@ -36,7 +36,8 @@
          </div>
          <div class="fitem">
              <label>parent:</label>
-             <input name="parent" class="easyui-textbox">
+             <input id="cc" class="easyui-combobox" name="parent"
+    data-options="valueField:'id',textField:'title',url:'<?php echo Core::base_url().'menu_backend/listdata';?>'" >
          </div>
      </form>
  </div>
