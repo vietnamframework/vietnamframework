@@ -101,5 +101,16 @@ class News_model extends VNModel{
         return $result;
         
     }
-    
+    public function get_new_post() {
+        try{
+            
+            $sql = "SELECT * FROM ". $this->table." order by id desc LIMIT 4";
+            return $this->query($sql, array("id" => $id));
+            
+            return $this->get_by_id($id);
+        } catch (Exception $e) {
+            VNLog::debug_var($this->log_name, $e->getMessage());
+            return false;
+        }
+    }
 }

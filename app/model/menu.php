@@ -33,7 +33,7 @@ class Menu_model extends VNModel{
      */
     public function get_list_menu($limmit = 0, $offset = 0) {
         try{
-            $sql = "SELECT *,(select count(*) from menu m where m.parent = t.id) have_child FROM ".$this->table;
+            $sql = "SELECT *,'0' as chk ,(select count(*) from menu m where m.parent = t.id) have_child FROM ".$this->table .' t';
             if($limmit == 0 && $offset == 0) {
                 // don't anything
                 return $this->query($sql);
