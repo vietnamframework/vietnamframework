@@ -6,6 +6,32 @@ class View
      * @var array Array of HTTP headers
      */
     private static $headers = array();
+    
+/**
+     * return absolute path to selected template directory
+     * @param  string  $path  path to file from views folder
+     * @param  array   $data  array of data
+     * @param  string  $custom path to template folder
+     */
+    public static function renderTemplateFronend($path, $data = false, $custom = false)
+    {
+        if (!headers_sent()) {
+            foreach (self::$headers as $header) {
+                header($header, true);
+            }
+        }
+        if ($custom === false) {
+            $template = View::getTemplate();
+            require "app/view/".$template."/before.html";
+            require "app/view/".$template."/$path.html";
+            require "app/view/".$template."/after.html";
+        } else {
+            require "app/view/$custom/before.html";
+            require "app/view/$custom/$path.html";
+            require "app/view/$custom/after.html";
+        }
+    }
+    
     /**
      * return absolute path to selected template directory
      * @param  string  $path  path to file from views folder
