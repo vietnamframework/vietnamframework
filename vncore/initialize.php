@@ -20,6 +20,9 @@ require_once 'controller.php';
 // Backend Controller
 require_once 'backendcontroller.php';
 
+// Backend Controller
+require_once 'frontendcontroller.php';
+
 // Validate
 require_once 'validate.php';
 
