@@ -23,4 +23,26 @@
         ?>
 	</div>
 </div>
+<div id="intr" class="container">
+	<div class="row-fluid">
+		<div class="brnews span9">
+			<h3>Breaking News</h3>
+			<ul id="scroller">
+			<?php
+            	foreach($list_top as $item){
+            		echo '<li><p><a href="#" title="'.$item['title'].'" rel="bookmark"><span class="title">'.$item['title'].'</span>'.$item['title'].'</a></p></li>';	
+            	}
+            ?>
+		</div>
+		
+		<div class="search span3">
+			<div class="offset1">
+				<form method="get" id="searchform" action="#">
+					<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Search here...'; }" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" /></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 	
