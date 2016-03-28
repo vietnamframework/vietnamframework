@@ -1,15 +1,12 @@
 ﻿<?php
-Class News_Controller extends Controller {
+Class News_Controller extends Frontend_Controller {
     public function Index() {
-        echo " url friendly!";
-        die;
+        $param = $_GET;
+        return $this->renderTemplateFronend('news'); // homepage
     }
     
     public  function View() {
-        $user_model = new User_model();
-        $data = $user_model->loveme();
-        var_dump($data);
-        die;
+        return $this->renderTemplateFronend('news'); 
     }
     
     public function Lg() {
