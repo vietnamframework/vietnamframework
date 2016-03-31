@@ -7,7 +7,7 @@
 	<header id="header" class="container">
 		<div id="mast-head">
 			<div id="logo">
-			<a href="index.html" title="Magazine" rel="home"><img src="app/view/newstreecolumn/images/logo.png" alt="Magazine" /></a>
+			<a href="index.html" title="Magazine" rel="home"><img src="<?php View::getPathView(); ?>images/logo.png" alt="Magazine" /></a>
 			</div>
 		</div>
 
@@ -41,7 +41,7 @@
 				</span>
 				</li>
 								
-				<li><a href="index.html"><img src="app/view/newstreecolumn/images/home.png" alt="Magazine"></a></li>
+				<li><a href="index.html"><img src="<?php View::getPathView(); ?>images/home.png" alt="Magazine"></a></li>
                 <?php 
                     foreach($list_menu as $key=>$row){
                         if($row['have_child']>0 && $list_menu[$key]['chk']=='0'){

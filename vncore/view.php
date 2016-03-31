@@ -108,4 +108,19 @@ class View
         return $script_jquery;
         
     }
+    
+    public static function getPathView() {
+        $hbaction = explode('/', $_REQUEST['hbaction']);
+        $template = View::getTemplate();
+        $count_path = count($hbaction);
+        
+        $pre_path = '';
+        if($count_path > 1) {
+            for ($i = 1; $i < $count_path; $i++) {
+                $pre_path .= '../';
+            }
+        }
+        
+        echo $pre_path."app/view/$template/";
+    }
 }
