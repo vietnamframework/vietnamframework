@@ -25,6 +25,22 @@ class News_model extends VNModel{
         }
     }
     
+    public function get_news_view($id) {
+        try{
+            $this->begin_transaction();
+            //counter
+            $sql_update = "UPDATE ".$this->table." SET counter = counter+1 WHERE id = ':id'";
+            $this->execute($sql_update, array('id' => $id));
+            $result = $this->get_by_id($id);
+            
+            $this->commit();
+            return $result;
+        } catch (Exception $e) {
+            VNLog::debug_var($this->log_name, $e->getMessage());
+            return false;
+        }
+    }
+    
     /**
      * get list news
      * @param number $limmit
