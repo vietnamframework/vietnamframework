@@ -6,6 +6,7 @@ class View
      * @var array Array of HTTP headers
      */
     private static $headers = array();
+    public static $templateUrl ='';
     
 /**
      * return absolute path to selected template directory
@@ -20,6 +21,7 @@ class View
                 header($header, true);
             }
         }
+        self::set_TemplateURL();
         if ($custom === false) {
             $template = View::getTemplate();
             //require "app/view/".$template."/before.html";
@@ -108,7 +110,6 @@ class View
         return $script_jquery;
         
     }
-    
     public static function getPathView() {
         $hbaction = explode('/', $_REQUEST['hbaction']);
         $template = View::getTemplate();
@@ -119,8 +120,22 @@ class View
             for ($i = 1; $i < $count_path; $i++) {
                 $pre_path .= '../';
             }
+        }        
+        echo $hbaction."app/view/$template/";
+    }
+    public static function getTemplateURL() {
+    	echo View::$templateUrl;
+    }
+    public static function set_TemplateURL() {
+        $hbaction = explode('/', $_REQUEST['hbaction']);
+        $template = View::getTemplate();
+        $count_path = count($hbaction);        
+        $pre_path = '';
+        if($count_path > 1) {
+            for ($i = 1; $i < $count_path; $i++) {
+                $pre_path .= '../';
+            }
         }
-        
-        echo $pre_path."app/view/$template/";
+        View::$templateUrl= $pre_path."app/view/$template/";
     }
 }
