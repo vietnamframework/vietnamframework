@@ -121,7 +121,7 @@ class View
                 $pre_path .= '../';
             }
         }        
-        echo $hbaction."app/view/$template/";
+        echo $pre_path."app/view/$template/";
     }
     public static function getTemplateURL() {
     	echo View::$templateUrl;
