@@ -1,5 +1,5 @@
 <?php
-class urlfriend_Backend_Controller extends Backend_Controller {
+class Urlfriend_Backend_Controller extends Backend_Controller {
     
     public function Index() {
         return $this->renderTemplate('urlfriend');

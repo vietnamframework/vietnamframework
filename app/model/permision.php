@@ -114,6 +114,19 @@ class Permision_model extends VNModel{
                 if($result_check[0]['count'] == 0) {
                     // have not func --> save this func to db
                     $this->create($param);
+                    
+                    $sql_get_id = "select max(id) as id from " . $this->table;
+                    $maxid = $this->query($sql_get_id);
+                    VNLog::debug_var("1111111111", $maxid);
+                    if(!empty($maxid)) {
+                        // save to grand permission
+                        $grand_md = new grand_model();
+                        $param_grand['groupid'] = 1;
+                        $param_grand['funcid'] = $maxid[0]['id'];
+                        $param_grand['permission'] = 1;
+                        $grand_md->create($param_grand);
+                    }
+                    
                 }
                 return true;
             } catch (Exception $e) {
