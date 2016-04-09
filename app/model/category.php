@@ -101,5 +101,14 @@ class Category_model extends VNModel{
         return $result;
         
     }
-    
+    public function get_category_byname($name) {
+        try{
+            
+            $sql = "SELECT * FROM ". $this->table." WHERE category_name = :category_name";
+            return $this->query($sql, array("category_name" => $name));
+        } catch (Exception $e) {
+            VNLog::debug_var($this->log_name, $e->getMessage());
+            return false;
+        }
+    }
 }

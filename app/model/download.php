@@ -1,6 +1,5 @@
 <?php 
-
-Class Download
+Class Download_model extends VNModel{
 {
     private $xpath ;
     private $sdom ;
@@ -37,7 +36,7 @@ Class Download
 	    return $result;
     }
     public function get_text($condition){
-        $arr_con = explode(';',$condition);
+        /*$arr_con = explode(';',$condition);
         $res ='';
         foreach($arr_con as $item){
             $elements = $this->xpath->query($item);
@@ -47,7 +46,8 @@ Class Download
                 $res.= $this->get_innerHTML($element);
     		}    
         }
-        return $res;
+        return $res;*/
+        return  $this->sdom->find($condition,0)->plaintext;
     }
     public function get_innerHTML($condition){
         /*$res ='';        
@@ -120,7 +120,7 @@ Class Download
     public function get_img($condition){
         $year = date('Y');
         $month = date('m');
-        $y_path = PHO_UPLOAD_DIR.'/'. $year;
+        $y_path = VN_FILEUPLOAD_DIR.'/'. $year;
         $m_path = $y_path .'/'. $month;
         if(!is_dir($y_path)){
             mkdir($y_path);
@@ -134,7 +134,7 @@ Class Download
 		}
         $extension = pathinfo($src, PATHINFO_EXTENSION);
         $file_name = $year.'/'.$month.'/'. uniqid(TRUE).'.'.$extension;
-        $file_full = PHO_UPLOAD_DIR.'/'.$file_name;
+        $file_full = VN_FILEUPLOAD_DIR.'/'.$file_name;
         //$attr = $this->get_attributes($condition);
         //echo $src;
         //echo $file_full;die;
@@ -147,7 +147,7 @@ Class Download
     {
          $year = date('Y');
         $month = date('m');
-        $y_path = PHO_UPLOAD_DIR.'/'. $year;
+        $y_path = VN_FILEUPLOAD_DIR.'/'. $year;
         $m_path = $y_path .'/'. $month;
         if(!is_dir($y_path)){
             mkdir($y_path);
@@ -158,7 +158,7 @@ Class Download
         
         $extension = pathinfo($src, PATHINFO_EXTENSION);
         $file_name = $year.'/'.$month.'/'. uniqid(TRUE).'.'.$extension;
-        $file_full = PHO_UPLOAD_DIR.'/'.$file_name;
+        $file_full = VN_FILEUPLOAD_DIR.'/'.$file_name;
         $data = $this->GetData_Url($src);        
         $this->file_save($data,$file_full);
         return $file_name;
@@ -214,14 +214,14 @@ Class Download
             $extension = pathinfo($src, PATHINFO_EXTENSION);
             $img_name =$year.'/'.$month.'/'. uniqid(TRUE).'.'.$extension;
             //$file_name = $path_dl.'/'. $img_name;         
-            $src_new = PHO_UPLOAD_DIR.'/'.$img_name;   
+            $src_new = VN_FILEUPLOAD_DIR.'/'.$img_name;   
             $this->file_save($data,$src_new);
             $img->src = '../../images/'.$img_name;
         }
         return $htmldom->save();
     }
     public function check_folder_download($year,$month){
-        $y_path = PHO_UPLOAD_DIR.'/'. $year;
+        $y_path = VN_FILEUPLOAD_DIR.'/'. $year;
         $m_path = $y_path .'/'. $month;		
         if(!is_dir($y_path)){
             mkdir($y_path);
@@ -230,6 +230,16 @@ Class Download
             mkdir($m_path);
         }
         //return $m_path;
+    }
+    public function getstructure_bylink($link) {
+        try{
+            
+            $sql = "SELECT * FROM download_structure WHERE ref_link = :ref_link";
+            return $this->query($sql, array("ref_link" => $link));
+        } catch (Exception $e) {
+            VNLog::debug_var($this->log_name, $e->getMessage());
+            return false;
+        }
     }
 }
 
