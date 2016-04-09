@@ -1,0 +1,58 @@
+<script>
+function download(){
+         /*$('#fm').form('submit',{
+             url: url_base+'download_backend/exe',
+             onSubmit: function(){
+            	 
+                 return $(this).form('validate');
+             },
+             success: function(result){
+                 var result = eval('('+result+')');
+
+                 if (result.errorMsg){
+                     $.messager.show({
+                         title: 'Error',
+                         msg: result.errorMsg
+                     });
+                 } else {
+                	 
+                     $('#dlg').dialog('close');        // close the dialog
+                    // $('#dg').datagrid('reload');    // reload the news data
+                 }
+             }
+         });*/
+    alert('xxx');
+}
+</script>
+<div style="height: 100%; padding: 10px;">
+    <form id="fm" method="post" action="download_backend/exe" method="POST" enctype="multipart/form-data">
+        <div class="fitem">
+            <label style="width: 95px;">Danh mục   </label>
+            <select name="category">
+                <option></option>
+                <?php 
+                $option =""; 
+                foreach($data['category'] as $row){                    
+                    $option .= '<option value="'.$row["id"].'">'.$row["category_name"].'</option>';
+                }
+                echo $option;               
+                ?>
+            </select>
+            <label>(nếu không chọn, sẽ lấy danh mục từ site nguồn)   </label>
+        </div>
+        <div class="fitem">
+             <label>Link download:</label>
+             <input name="link_dl" class="easyui-textbox" required="true" size="80">
+             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" id="download" style="width:90px">Download</a>
+            
+         </div>         
+     </form>
+</div>
+<script>
+$(document).ready(function(){
+    $('#download').click(function(){
+        //alert('dd');
+        $('#fm').submit();
+    });
+})
+</script>
