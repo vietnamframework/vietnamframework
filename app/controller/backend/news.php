@@ -23,8 +23,8 @@ class News_Backend_Controller extends Backend_Controller {
             $upload = new Upload_Backend_Controller();
             $param['file_name'] = $upload->uploadLocation('file');
         }
-        if($param['key'] == '') {
-            $param['key'] = uniqid();
+        if($param['key_lang'] == '') {
+            $param['key_lang'] = uniqid();
         }
         
         $param['authour_id'] = 1;
@@ -44,9 +44,21 @@ class News_Backend_Controller extends Backend_Controller {
      * @permission news/list|list news @end_permission
      */
     public function Listdata() {
+    	$param = $this->get_param(array('page', 'rows'));
+    	
+    	$limmit = '';
+    	$offset = '';
+    	if($param['page'] != '' && $param['rows'] != '') {
+			$limmit = intval($param['rows']);
+			$offset = intval(($param['page'] -1) * $limmit);
+		}
+    	
         $news_model = new News_model();
-        $data = $news_model->get_list_news();
-        return View::Json($data);
+        $data = $news_model->get_list_news($limmit, $offset);
+        $result['rows'] = $data;
+        $count = $news_model->count_data();
+        $result['total'] = $count;
+        return View::Json($result);
     }
     
     /**

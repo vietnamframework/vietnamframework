@@ -99,6 +99,10 @@ var translate = false;
 
  	
  	$(document).ready(function(){
+ 		
+		var dg = $('#dg').datagrid();
+		dg.datagrid('enableFilter', {});
+ 		
  		$("#avata_upload").click(function(){
 
  	        var filename = $("#file_name").val();

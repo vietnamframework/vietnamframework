@@ -67,7 +67,17 @@ class News_model extends VNModel{
             return false;
         }
     }
-
+	
+	public function count_data() {
+		$sql = "SELECT count(*) as total FROM ".$this->table;
+		$result =  $this->query($sql);
+		
+		if($result[0]['total'] != 0) {
+			return $result[0]['total'];
+		}
+		
+		return 0;
+	}
     /**
      * create news
      * @todo make sql with data $news to :
