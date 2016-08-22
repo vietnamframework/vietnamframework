@@ -63,6 +63,7 @@ window.return_value = function(value){
 	         <th field="age_from" width="50">age_from</th>
 	         <th field="age_to" width="50">age_to</th>
              <th field="size_id" width="50">size_id</th>
+             <th field="genders" width="50">genders</th>
 	         <th field="category_id" width="50">category_id</th>
 	         <th field="image_avata" width="50">image_avata</th>
 	         <th field="image_detail_1" width="50">image_detail_1</th>
@@ -161,18 +162,22 @@ window.return_value = function(value){
     </div>
          
          <div class="fitem">
-             <label>size_id:</label>
+             <label>Size_id:</label>
              <input name="size_id" class="easyui-textbox">
+         </div>
+         <div class="fitem">
+             <label>Genders:</label>
+             <input name="genders" class="easyui-switchbutton" data-options="onText:'Male',offText:'Fmale'">
          </div>
               
          <div class="fitem">
-             <label>category:</label>
+             <label>Category:</label>
              <input name="category_id"  id="read" data-options="valueField:'id',textField:'category_name' ,url:'<?php echo Core::base_url().'category_backend/listdata';?>'"
               class="easyui-combobox" value="category_name" >
          </div>
          
         <div class="fitem">
-         	<label>image_avata:</label>
+         	<label>Image_avata:</label>
          	<input class="easyui-filebox" name="image_avata" data-options="prompt:'Choose a file...'" style="width:150px">
          </div>
          
