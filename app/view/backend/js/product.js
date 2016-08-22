@@ -115,30 +115,11 @@ var translate = false;
  	            }
  	        });
  	    });
+ 	});
  		
  		
  		//discount price_display price
  		
  		//price_display = $('#price_display imput').val();
- 		
- 		$('input[name="price"]').onchange(function() {
- 			set_price_dislay();
- 		});
- 		
- 		$('input[name="discount"]').onchange(function() {
- 			set_price_dislay();
- 		});
- 		
- 		function set_price_dislay() {
- 			console.log('hung');
- 			price = $('input[name="price"]').val();
- 	 		discount = $('input[name="discount"]').val();
- 	 		if(price != '' && discount != '') {
- 	 			price_display = price/(discount/100);
- 	 	 		$('input[name="price_display').val(price_display);
- 	 		}
- 		}
- 		
- 	});
 
  	
