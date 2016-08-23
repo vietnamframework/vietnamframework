@@ -70,6 +70,9 @@
         </style>
     </head>
     <body>
+    <?php 
+    //var_dump($data['product']);die;
+     ?>
         <!-- Start: Main -->
         <div id="web5s_wrapper">
             <!-- Start: Header -->
@@ -490,16 +493,25 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="bestseller">
                                         <div class="pdt-content products-grid">
-                                            <ul class="pdt-list">
+                                        	<?php 
+                                            if(count($data['product']) > 0) {
+                                            	$count = 0;
+                                            	foreach($data['product'] as $product) {
+                                            		if($count%4 == 0) {
+                                            			echo '<ul class="pdt-list">';
+                                            		}
+                                            ?>
+                                            
+                                            
                                                 <div class="item">
                                                     <div class="item-inner">
                                                         <div class="item-img">
                                                             <div class="item-img-info">
-                                                                <a href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang" title="Vest bé trai thời trang" class="product-image">
-                                                                <img src="<?php echo View::getPathView(); ?>image/thumb(5).php" alt="0">
+                                                                <a href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang" title="<?php $product['product_name'] ?>" class="product-image">
+                                                                <img src="<?php echo Core::base_url().'file_upload/'.$product['image_avata'];?>" alt="0">
                                                                 </a>
                                                                 <div class="sale-label sale-top-right">
-                                                                    <span>-26%</span>
+                                                                    <span>-<?php echo $product['discount']; ?>%</span>
                                                                 </div>
                                                             </div>
                                                             <!--item-img-info-->
@@ -508,18 +520,18 @@
                                                         <div class="item-info">
                                                             <div class="info-inner">
                                                                 <div class="item-title">
-                                                                    <a title="Vest bé trai thời trang" href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang">Vest bé trai thời trang</a>
+                                                                    <a title="<?php echo $product['product_name']; ?>" href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang"><?php echo $product['product_name']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-price">
                                                                         <div class="price-box">
                                                                             <p class="old-price">
                                                                                 <span class="price-label">Giá cũ:</span>
-                                                                                <span id="old-price-45" class="price">760.000₫</span>
+                                                                                <span id="old-price-45" class="price"><?php echo $product['price_display']; ?>₫</span>
                                                                             </p>
                                                                             <p class="special-price">
                                                                                 <span class="price-label">Giá khuyến mại:</span>
-                                                                                <span id="product-price-45" class="price">560.000₫</span>
+                                                                                <span id="product-price-45" class="price"><?php echo $product['price']; ?>₫</span>
                                                                             </p>
                                                                         </div>
                                                                     </div>
@@ -542,199 +554,16 @@
                                                         <!--item-info-->
                                                     </div>
                                                 </div>
-                                                <div class="item">
-                                                    <div class="item-inner">
-                                                        <div class="item-img">
-                                                            <div class="item-img-info">
-                                                                <a href="<?php echo Core::base_url(); ?>san-pham/tui-xach-nam-cao-cap" title="Túi xách nam cao cấp" class="product-image">
-                                                                <img src="<?php echo View::getPathView(); ?>image/thumb(6).php" alt="0">
-                                                                </a>
-                                                            </div>
-                                                            <!--item-img-info-->
-                                                        </div>
-                                                        <!--item-img-->
-                                                        <div class="item-info">
-                                                            <div class="info-inner">
-                                                                <div class="item-title">
-                                                                    <a title="Túi xách nam cao cấp" href="<?php echo Core::base_url(); ?>san-pham/tui-xach-nam-cao-cap">Túi xách nam cao cấp</a>
-                                                                </div>
-                                                                <div class="item-content">
-                                                                    <div class="item-price">
-                                                                        <div class="price-box">
-                                                                            <p class="old-price">
-                                                                                <span class="price-label">Giá cũ:</span>
-                                                                                <span id="old-price-45" class="price">870.000₫</span>
-                                                                            </p>
-                                                                            <p class="special-price">
-                                                                                <span class="price-label">Giá khuyến mại:</span>
-                                                                                <span id="product-price-45" class="price">740.000₫</span>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <div class="add_cart">
-                                                                            <!-- Add cart -->
-                                                                            <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16921" title="Yêu thích sản phẩm"></a>
-                                                                            <a href="<?php echo Core::base_url(); ?>san-pham/tui-xach-nam-cao-cap" class="button btn-cart" title="Mua hàng">
-                                                                            <span>Mua hàng</span>
-                                                                            </a>
-                                                                            <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16921" title="Thêm vào so sánh"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Actions -->
-                                                                </div>
-                                                                <!--item-content-->
-                                                            </div>
-                                                            <!--info-inner-->
-                                                        </div>
-                                                        <!--item-info-->
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-inner">
-                                                        <div class="item-img">
-                                                            <div class="item-img-info">
-                                                                <a href="<?php echo Core::base_url(); ?>san-pham/da-da-tiec-sanh-dieu" title="Dạ dạ tiệc sành điệu" class="product-image">
-                                                                <img src="<?php echo View::getPathView(); ?>image/thumb(7).php" alt="0">
-                                                                </a>
-                                                            </div>
-                                                            <!--item-img-info-->
-                                                        </div>
-                                                        <!--item-img-->
-                                                        <div class="item-info">
-                                                            <div class="info-inner">
-                                                                <div class="item-title">
-                                                                    <a title="Dạ dạ tiệc sành điệu" href="<?php echo Core::base_url(); ?>san-pham/da-da-tiec-sanh-dieu">Dạ dạ tiệc sành điệu</a>
-                                                                </div>
-                                                                <div class="item-content">
-                                                                    <div class="item-price">
-                                                                        <div class="price-box">
-                                                                            <p class="old-price">
-                                                                                <span class="price-label">Giá cũ:</span>
-                                                                                <span id="old-price-45" class="price"></span>
-                                                                            </p>
-                                                                            <p class="special-price">
-                                                                                <span class="price-label">Giá khuyến mại:</span>
-                                                                                <span id="product-price-45" class="price">650.000₫</span>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <div class="add_cart">
-                                                                            <!-- Add cart -->
-                                                                            <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16915" title="Yêu thích sản phẩm"></a>
-                                                                            <a href="<?php echo Core::base_url(); ?>san-pham/da-da-tiec-sanh-dieu" class="button btn-cart" title="Mua hàng">
-                                                                            <span>Mua hàng</span>
-                                                                            </a>
-                                                                            <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16915" title="Thêm vào so sánh"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Actions -->
-                                                                </div>
-                                                                <!--item-content-->
-                                                            </div>
-                                                            <!--info-inner-->
-                                                        </div>
-                                                        <!--item-info-->
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-inner">
-                                                        <div class="item-img">
-                                                            <div class="item-img-info">
-                                                                <a href="<?php echo Core::base_url(); ?>san-pham/khan-quang-dinh-kim-loai" title="Khăn quảng đính kim loại" class="product-image">
-                                                                <img src="<?php echo View::getPathView(); ?>image/thumb(8).php" alt="0">
-                                                                </a>
-                                                            </div>
-                                                            <!--item-img-info-->
-                                                        </div>
-                                                        <!--item-img-->
-                                                        <div class="item-info">
-                                                            <div class="info-inner">
-                                                                <div class="item-title">
-                                                                    <a title="Khăn quảng đính kim loại" href="<?php echo Core::base_url(); ?>san-pham/khan-quang-dinh-kim-loai">Khăn quảng đính kim loại</a>
-                                                                </div>
-                                                                <div class="item-content">
-                                                                    <div class="item-price">
-                                                                        <div class="price-box">
-                                                                            <p class="old-price">
-                                                                                <span class="price-label">Giá cũ:</span>
-                                                                                <span id="old-price-45" class="price"></span>
-                                                                            </p>
-                                                                            <p class="special-price">
-                                                                                <span class="price-label">Giá khuyến mại:</span>
-                                                                                <span id="product-price-45" class="price">650.000₫</span>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <div class="add_cart">
-                                                                            <!-- Add cart -->
-                                                                            <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16916" title="Yêu thích sản phẩm"></a>
-                                                                            <a href="<?php echo Core::base_url(); ?>san-pham/khan-quang-dinh-kim-loai" class="button btn-cart" title="Mua hàng">
-                                                                            <span>Mua hàng</span>
-                                                                            </a>
-                                                                            <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16916" title="Thêm vào so sánh"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Actions -->
-                                                                </div>
-                                                                <!--item-content-->
-                                                            </div>
-                                                            <!--info-inner-->
-                                                        </div>
-                                                        <!--item-info-->
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-inner">
-                                                        <div class="item-img">
-                                                            <div class="item-img-info">
-                                                                <a href="<?php echo Core::base_url(); ?>san-pham/tui-xach-thoi-trang-lv" title="Túi xách thời trang LV" class="product-image">
-                                                                <img src="<?php echo View::getPathView(); ?>image/thumb(9).php" alt="0">
-                                                                </a>
-                                                            </div>
-                                                            <!--item-img-info-->
-                                                        </div>
-                                                        <!--item-img-->
-                                                        <div class="item-info">
-                                                            <div class="info-inner">
-                                                                <div class="item-title">
-                                                                    <a title="Túi xách thời trang LV" href="<?php echo Core::base_url(); ?>san-pham/tui-xach-thoi-trang-lv">Túi xách thời trang LV</a>
-                                                                </div>
-                                                                <div class="item-content">
-                                                                    <div class="item-price">
-                                                                        <div class="price-box">
-                                                                            <p class="old-price">
-                                                                                <span class="price-label">Giá cũ:</span>
-                                                                                <span id="old-price-45" class="price"></span>
-                                                                            </p>
-                                                                            <p class="special-price">
-                                                                                <span class="price-label">Giá khuyến mại:</span>
-                                                                                <span id="product-price-45" class="price">450.000₫</span>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="actions">
-                                                                        <div class="add_cart">
-                                                                            <!-- Add cart -->
-                                                                            <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16917" title="Yêu thích sản phẩm"></a>
-                                                                            <a href="<?php echo Core::base_url(); ?>san-pham/tui-xach-thoi-trang-lv" class="button btn-cart" title="Mua hàng">
-                                                                            <span>Mua hàng</span>
-                                                                            </a>
-                                                                            <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16917" title="Thêm vào so sánh"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Actions -->
-                                                                </div>
-                                                                <!--item-content-->
-                                                            </div>
-                                                            <!--info-inner-->
-                                                        </div>
-                                                        <!--item-info-->
-                                                    </div>
-                                                </div>
-                                            </ul>
+                                            
+                                            
+                                            <?php
+                                            		if($count%4 == 3) {
+                                            			echo '</ul>';
+                                            		}
+                                            	$count++;
+                                            	}
+                                            } 
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="sale">

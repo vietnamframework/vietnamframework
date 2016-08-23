@@ -83,9 +83,23 @@ class product_Backend_Controller extends Backend_Controller {
      * @permission product/list|list product @end_permission
      */
     public function Listdata() {
-        $product_model = new Product_model();
-        $data = $product_model->get_list_product();
-        return View::Json($data);
+        
+        
+        $param = $this->get_param(array('page', 'rows'));
+    	
+    	$limmit = '';
+    	$offset = '';
+    	if($param['page'] != '' && $param['rows'] != '') {
+			$limmit = intval($param['rows']);
+			$offset = intval(($param['page'] -1) * $limmit);
+		}
+    	$product_model = new Product_model();
+       
+        $data = $product_model->get_list_product($limmit, $offset);
+        $result['rows'] = $data;
+        $count = $product_model->count_data();
+        $result['total'] = $count;
+        return View::Json($result);
     }
     
     /**
