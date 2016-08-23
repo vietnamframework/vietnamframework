@@ -5,6 +5,9 @@ Class Home_Controller extends Frontend_Controller {
     	$model = new Product_model();
     	$result['product'] = $model->get_list_product();
     	
+    	$db = new Slide_model();
+    	$result['slide'] = $db->get_list_slide();
+    	
         Session::set('template', 'thathi');
         return $this->renderTemplateFronend('index',$result); // homepage
     }
