@@ -3,66 +3,25 @@
             
             <div id="web5s_content">
                 <!-- Start: Slideshow -->
-                <div id="web5s-slideshow">
-                    <div id="owl-slideshow-web5s" class="owl-carousel owl-theme owl-loaded">
-                        <div class="owl-stage-outer">
-                            <div class="owl-stage" style="transform: translate3d(-4880px, 0px, 0px); transition: 0s; width: 7320px;">
-                                <div class="owl-item cloned" style="width: 1220px; margin-right: 0px;">
-                                    <div class="slide-item">
-                                        <a href="" title="01">
-                                        <img src="<?php echo View::getPathView(); ?>image/thumb(1).php" alt="01">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 1220px; margin-right: 0px;">
-                                    <div class="slide-item">
-                                        <a href="" title="02">
-                                        <img src="<?php echo View::getPathView(); ?>image/thumb(1).php" alt="02">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 1220px; margin-right: 0px;">
-                                    <div class="slide-item">
-                                        <a href="" title="01">
-                                        <img src="<?php echo View::getPathView(); ?>image/thumb(1).php" alt="01">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 1220px; margin-right: 0px;">
-                                    <div class="slide-item">
-                                        <a href="" title="02">
-                                        <img src="<?php echo View::getPathView(); ?>image/thumb(1).php" alt="02">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned active" style="width: 1220px; margin-right: 0px;">
-                                    <div class="slide-item">
-                                        <a href="" title="01">
-                                        <img src="<?php echo View::getPathView(); ?>image/thumb(1).php" alt="01">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 1220px; margin-right: 0px;">
-                                    <div class="slide-item">
-                                        <a href="" title="02">
-                                        <img src="<?php echo View::getPathView(); ?>image/thumb(1).php" alt="02">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-controls">
-                            <div class="owl-nav">
-                                <div class="owl-prev" style=""><i class="fa fa-caret-left"></i></div>
-                                <div class="owl-next" style=""><i class="fa fa-caret-right"></i></div>
-                            </div>
-                            <div class="owl-dots" style="">
-                                <div class="owl-dot active"><span></span></div>
-                                <div class="owl-dot"><span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                	if(count($data['slide']) > 0) {
+                ?>
+                <ul class="bxslider" id="web5s-slideshow">
+                	<?php
+                		foreach($data['slide'] as $slide) {
+                	?>
+                		<li >
+						  <img style="width: 1220px; margin-right: 0px;" src="<?php echo Core::base_url(); ?>file_upload/<?php echo $slide['image']; ?>" alt="01">
+						</li>
+                	<?php
+                		}
+                	?>
+				</ul>
+                
+                <?php
+                	}
+                ?>
+
                 <!-- End: Slideshow -->
             </div>
             <!-- End: Content Wrapper -->

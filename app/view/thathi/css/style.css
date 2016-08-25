@@ -1,9 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700&subset=latin,vietnamese,latin-ext);
-@import url(http://fonts.googleapis.com/css?family=Roboto:400italic,600italic,700italic,400,600,700&subset=latin,vietnamese,latin-ext);
-@import url("../../../fonts/font-awesome/font-awesome.css");
-@import url("../../../fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css");
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -11,7 +7,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #666;
-  background: url(../../../img/bg.jpg) no-repeat fixed left top #f8f8f8;
+  background: url(../image/bg.jpg) no-repeat fixed left top #f8f8f8;
 }
 input,
 button,
@@ -692,7 +688,7 @@ ul.mobile-menu ul li:hover > ul {
   background-attachment: scroll;
   background-clip: border-box;
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("../../../img/cart.png");
+  background-image: url("../image/cart.png");
   background-origin: padding-box;
   background-position: center center;
   background-repeat: no-repeat, repeat;
@@ -1428,7 +1424,7 @@ button.button.btn-cart span {
 }
 /*SALE CUSTOM*/
 .offer-sale {
-  background-image: url("../../../img/parralax-bg.jpg");
+  background-image: url("../image/parralax-bg.jpg");
   margin-top: 40px;
   padding-top: 60px;
   padding-bottom: 50px;
@@ -1839,7 +1835,7 @@ input[type=radio].f-radio:checked + label.f-label-r {
 }
 label.f-label,
 label.f-label-r {
-  background-image:url('../../../img/f-checkbox.png');
+  background-image:url('../image/f-checkbox.png');
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -1848,7 +1844,7 @@ label.f-label-r {
   user-select: none;
 }
 label.f-label-r {
-  background-image:url('../../../img/f-radio.png');
+  background-image:url('../image/f-radio.png');
 }
 /*TOOLBAR PRODUCTS*/
 select {
@@ -2679,12 +2675,12 @@ ul.image-review li img {
   cursor: default;
 }
 .icon-question {
-  background: url('../../../img/checkout/icon-question.png') no-repeat;
+  background: url('../image/checkout/icon-question.png') no-repeat;
   width: 14px;
   height: 14px;
 }
 #web5s_checkout_bg {
-  background: url('../../../img/checkout/bg-checkout.jpg') no-repeat fixed left top #f8f8f8;
+  background: url('../image/checkout/bg-checkout.jpg') no-repeat fixed left top #f8f8f8;
 }
 #web5s_checkout .title-checkout {
   position: relative;
@@ -3496,7 +3492,7 @@ ul.order.tabled-data li .value {
   margin-bottom: 25px;
 }
 .product-compare .compare-title a.link-print {
-  background: url("../../../img/print.gif") no-repeat 0 2px;
+  background: url("../image/print.gif") no-repeat 0 2px;
   float: right;
   font-size: 13px;
   margin: 10px 0 0;
@@ -3585,7 +3581,7 @@ ul.order.tabled-data li .value {
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
-  background: rgba(38, 50, 72, 0.8) url(../../../img/cd-top-arrow.svg) no-repeat center 50%;
+  background: rgba(38, 50, 72, 0.8) url(../image/cd-top-arrow.svg) no-repeat center 50%;
   visibility: hidden;
   opacity: 0;
   z-index: 999999;
