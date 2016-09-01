@@ -1,0 +1,187 @@
+<?php session_start();
+ ?>
+
+<!-- Start: Notify -->
+<div id="web5s_notify" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bg-info hideit">    
+                    <p class="message_content text-success">
+                            <span class="fa fa-check"></span> <strong>Thành công:</strong>
+                            Sản phẩm đã được thêm vào giỏ hàng của bạn                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                     <!-- End Message -->
+
+            <!-- Start: Content Wrapper -->
+            <div id="web5s_content">
+                <div class="container">
+                    <div class="row">
+                        <div id="web5s-view-cart" class="col-ms-12 col-xs-12">
+                                <div class="row">
+    <div class="cart-item col-md-12">
+        <h2 class="cart-title">
+            Thông tin giỏ hàng        </h2>
+        
+        <!-- Start: Cart item -->
+        <?php  $total = 0; 
+               foreach ($_SESSION['cart'] as $result){ ?>
+                    <form method="post" action="" id="row-65114d1ad4bf477dc49f01368e212fa1" class="t-form">
+                <div class="row no-margin cart-info">
+                    <div class="col-xs-12 col-sm-2 no-margin imgs-holder">
+                        <a class="thumb-holder" title="<?php echo $result['product_name'] ?>">
+                            <img src="<?php echo Core::base_url().'file_upload/'.$result['image_avata']?>" alt="<?php echo $result['product_name'] ?>">
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 title-holder">
+                        <div class="title">
+                          <h3><?php  echo $result['product_name'] ?> </h3>
+                        </div>
+                        <div class="brand">
+                            <a title="" target="_blank" href=""></a>
+                                                    </div>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-2 no-margin unit-price">
+                        <div class="price"><?php  echo number_format($result['price']) ?></div>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-3 no-margin qty">
+                        <div class="quantity">
+                            <div class="le-quantity">
+                                <!--<a href="javascript:void(0)" _rowid="65114d1ad4bf477dc49f01368e212fa1" class="minus"></a>-->
+                                    <input type="text" readonly value="<?php  echo $result['qty'] ;?>">
+                                <!--  <a href="javascript:void(0)" _rowid="65114d1ad4bf477dc49f01368e212fa1" class="plus" max="54"></a>-->
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-2 no-margin">
+                        <div class="price"><?php  echo number_format(($result['price'] * $result['qty'])) ?></div>
+                        <a onclick="return confirm(&#39;Bạn có chắc chắn muốn xóa sản phẩm Vest bé trai thời trang khỏi giỏ hàng&#39;);" href="" title="Xóa sản phẩm khỏi giỏ hàng" class="close-btn"><i class="fa fa-trash-o"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+          <?php  $total += $result['price']*$result['qty']; };?>
+        <!-- End: Cart item -->
+        
+        <!-- End: Cart item -->
+        <div class="row no-margin cart-other">
+            <a class="c-shopping" href="<?php echo Core::base_url() ?>home" title="Tiếp tục mua hàng">
+                <i class="fa fa-arrow-right"></i> Tiếp tục mua hàng            </a>
+            <a class="clear-totalcart" onclick="return confirm(&#39;Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng&#39;)" href="<?php echo Core::base_url(); ?>home/destroy" title="Xóa giỏ hàng"><i class="fa fa-remove"></i> Xóa giỏ hàng</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="selling-point-cart">
+                        <ul>
+                                    <li><span class="fa fa-check"></span>Thời gian giao hàng từ 3 - 5 ngày làm việc</li>
+                                    <li><span class="fa fa-check"></span>Đổi trả hàng trong vòng 15 ngày</li>
+                                    <li><span class="fa fa-check"></span>Miễn phí giao hàng toàn quốc</li>
+                                    <li><span class="fa fa-check"></span>Thanh toán khi nhận hàng / Thanh toán online</li>
+                            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="cart-summary">
+            <h3 class="cart-title">Thông tin giỏ hàng</h3>
+            <div class="body">
+                <ul class="tabled-data inverse-bold no-border" id="total-price">
+                    <li>
+                        <label>Thành tiền:</label>
+                        <div class="value pull-right"><?php echo number_format($total);  ?>₫</div>
+                    </li>
+                </ul>
+                <div class="buttons-holder">
+                    <a href="<?php echo Core::base_url()?>home/checkout" class="le-button" title="Tiếp tục">Thanh toán                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product featured -->
+ <div class="featured-products products-grid product-related">
+    <div class="fea-items-products">
+        <div class="new_title">
+            <h2>Sản phẩm liên quan</h2>
+        </div>
+        <div id="featured-slider">
+             <div id="owl-newfeatured-web5s" class="owl-carousel clickable owl-theme owl-loaded">
+                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                <!-- .owl-allproducts -->
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1160px, 0px, 0px); transition: 0s; width: 4253.33px;"><div class="owl-item cloned" style="width: 193.333px; margin-right: 0px;"><div class="item">
+        <div class="item-inner">
+            <div class="item-img">
+                <div class="item-img-info">
+                    <a href="http://binhvan.web5s.com.vn/san-pham/vest-be-trai-thoi-trang" title="Vest bé trai thời trang" class="product-image">
+                        <img src="./giohang_files/thumb(2).php" alt="0">
+                    </a>
+                    <div class="sale-label sale-top-right">
+                        <span>-26%</span></div>                </div> 
+                <!--item-img-info-->
+            </div> 
+            <!--item-img-->
+            <div class="item-info">
+                <div class="info-inner">
+                    <div class="item-title">
+                        <a title="Vest bé trai thời trang" href="http://binhvan.web5s.com.vn/san-pham/vest-be-trai-thoi-trang">Vest bé trai thời trang</a>
+                    </div> 
+                    <div class="item-content">
+                        <div class="item-price">
+                            <div class="price-box">
+                                <p class="old-price">
+                                    <span class="price-label">Giá cũ:</span>
+                                    <span id="old-price-45" class="price">760.000₫</span>
+                                </p>
+                                <p class="special-price">
+                                    <span class="price-label">Giá khuyến mại:</span>
+                                    <span id="product-price-45" class="price">560.000₫</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <div class="add_cart">
+                                <!-- Add cart -->
+                                <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16920" title="Yêu thích sản phẩm"></a>
+                                
+                                <a href="http://binhvan.web5s.com.vn/san-pham/vest-be-trai-thoi-trang" class="button btn-cart" title="Mua hàng">
+                                    <span>Mua hàng</span>
+                                </a>
+                                
+                                <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16920" title="Thêm vào so sánh"></a>
+                            </div>
+                        </div> 
+                        <!-- Actions -->
+                    </div> 
+                    <!--item-content-->
+                </div> 
+                <!--info-inner-->
+            </div> 
+            <!--item-info-->
+        </div>
+    </div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style=""><i class="fa fa-caret-left"></i></div><div class="owl-next" style=""><i class="fa fa-caret-right"></i></div></div><div class="owl-dots" style="display: none;"></div></div></div>
+        </div>
+     </div>
+</div> 
+<!-- product-related -->                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Content Wrapper -->

@@ -1,0 +1,325 @@
+
+    <div id="web5s_checkout">
+        <div class="container">
+            <div class="title-checkout">
+                <a class="back-cart" href="<?php echo Core::base_url();?>home/viewcart">
+                    <i class="fa fa-mail-reply-all"></i> Quay về giỏ hàng                </a>
+                <?php if(isset($data['status'])){echo "<h1 style='color:blue;'> Bạn đã thanh toán đơn hàng thành công </h1>";}else{ echo " <h1> Thanh toán đơn hàng </h1>";}   ?>
+            </div>
+            <div class="info-checkout">
+                <div class="row">
+                    <div class="col-md-8 step-2">
+                        <h2 class="step-title">
+                            Thông tin thanh toán                        </h2>
+                        <div class="form-info">
+                            <div class="delivery-address">
+                            <form action="<?php echo Core::base_url();?>home/finish" method="post">
+                            <?php foreach($_SESSION['cart'] as $item) {?>
+                               <input type="hidden" name="id[]" value="<?php echo $item['id']; ?>"/>
+                               <?php }?>
+                                    <div class="form-group clearfix">
+                                        <div class="column-first-child">
+                                            <label for="fullname">Tên đầy đủ(<span class="text-danger">*</span>)</label>
+                                        </div>
+                                        <div class="column-last-child">
+                                            <input class="input-checkout" maxlength="50" id="fullname" name="name" value="" placeholder="Ví dụ:  Nguyễn Văn A" type="text" _autocheck="true">
+                                            <div name="fullname_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                      
+                                    <div class="form-group clearfix">
+                                        <div class="column-first-child">
+                                            <label for="phone">Di động(<span class="text-danger">*</span>)</label>
+                                        </div>
+                                        <div class="column-last-child">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input class="input-checkout" maxlength="13" id="phone" name="phone" value="" placeholder="Ví dụ: 0904.904.904" type="text" _autocheck="true">
+                                                    <div name="phone_error" class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="form-group clearfix">
+                                        <div class="column-first-child">
+                                            <label for="email">Email(<span class="text-danger">*</span>)</label>
+                                        </div>
+                                        <div class="column-last-child">
+                                            <input class="input-checkout" maxlength="50" id="email" name="email" value="" placeholder="Ví dụ: Sale@inet.vn" type="text" _autocheck="true">
+                                            <div name="email_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="form-group clear-hr clearfix">
+                                        <div class="column-first-child"><label></label></div>
+                                        <div class="column-last-child"><hr></div>
+                                    </div>
+                                    
+                                    <div class="form-group clearfix">
+                                        <div class="column-first-child">
+                                            <label for="address">Địa chỉ(<span class="text-danger">*</span>)</label>
+                                        </div>
+                                        <div class="column-last-child">
+                                            <input class="input-checkout" maxlength="300" id="address" name="address" value="" placeholder="Ví dụ:  Tầng 6, Toà nhà iNET, 247 Cầu Giấy, Q. Cầu Giấy" type="text" _autocheck="true">
+                                            <div name="address_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group clearfix">
+                                        <div class="column-first-child">
+                                            <label for="param_province">
+                                                Tỉnh/Thành phố(<span class="text-danger">*</span>)
+                                            </label>
+                                        </div>
+                                        <div class="column-last-child">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="selector selector-default" for="param_province">
+                                                        <select name="province" id="param_province" _type="" _autocheck="true">
+                                                            <option value="">Chọn Tỉnh/Thành phố</option>
+                                                                                                                        <option value="Hà Nội">
+                                                                Hà Nội                                                            </option>
+                                                                                                                        <option value="Hải Phòng">
+                                                                Hải Phòng                                                            </option>
+                                                                                                                        <option value="Hồ Chí Minh">
+                                                                Hồ Chí Minh                                                            </option>
+                                                                                                                        <option value="Cần Thơ  ">
+                                                                Cần Thơ                                                            </option>
+                                                                                                                        <option value=" Đà Nẵng ">
+                                                                Đà Nẵng                                                            </option>
+                                                                                                                        <option value=" Bình Phước">
+                                                                Bình Phước                                                            </option>
+                                                                                                                        <option value="Lâm Đồng">
+                                                                Lâm Đồng                                                            </option>
+                                                                                                                        <option value=" Đắk Nông ">
+                                                                Đắk Nông                                                            </option>
+                                                                                                                        <option value="Đắk Lắk">
+                                                                Đắk Lắk                                                            </option>
+                                                                                                                        <option value="Gia Lai">
+                                                                Gia Lai                                                            </option>
+                                                                                                                        <option value="Kon Tum">
+                                                                Kon Tum                                                            </option>
+                                                                                                                        <option value=" Bình Thuận ">
+                                                                Bình Thuận                                                            </option>
+                                                                                                                        <option value="Ninh Thuận">
+                                                                Ninh Thuận                                                            </option>
+                                                                                                                        <option value=" Khánh Hòa ">
+                                                                Khánh Hòa                                                            </option>
+                                                                                                                        <option value=" Phú Yên">
+                                                                Phú Yên                                                            </option>
+                                                                                                                        <option value="Bình Định ">
+                                                                Bình Định                                                            </option>
+                                                                                                                        <option value="Tây Ninh">
+                                                                Tây Ninh                                                            </option>
+                                                                                                                        <option value="Bình Dương ">
+                                                                Bình Dương                                                            </option>
+                                                                                                                        <option value="Đồng Nai">
+                                                                Đồng Nai                                                            </option>
+                                                                                                                        <option value="Cà Mau ">
+                                                                Cà Mau                                                            </option>
+                                                                                                                        <option value="Bạc Liêu">
+                                                                Bạc Liêu                                                           
+                                                                                                                        
+                                                                Sóc Trăng                                                           
+                                                                                                                        <option value=" Sóc Trăng">
+                                                                Hậu Giang                                                            </option>
+                                                                                                                        <option value="Hậu Giang ">
+                                                                Kiên Giang                                                            </option>
+                                                                                                                        <option value="Kiên Giang ">
+                                                                An Giang                                                            </option>
+                                                                                                                        <option value="An Giang ">
+                                                                Đồng Tháp                                                            </option>
+                                                                                                                        <option value="Đồng Tháp ">
+                                                                Vĩnh Long                                                            </option>
+                                                                                                                        <option value="Vĩnh Long  ">
+                                                                Trà Vinh                                                            </option>
+                                                                                                                        <option value=" Trà Vinh">
+                                                                Bến Tre                                                            </option>
+                                                                                                                        <option value=" Bến Tre ">
+                                                                Tiền Giang                                                            </option>
+                                                                                                                        <option value="Tiền Giang">
+                                                                Long An                                                            </option>
+                                                                                                                        <option value="Long An">
+                                                                Bà Rịa - Vũng Tàu                                                            </option>
+                                                                                                                        <option value=" Bà Rịa - Vũng Tàu">
+                                                                Quảng Ngãi                                                            </option>
+                                                                                                                        <option value="Quảng Ngãi ">
+                                                                Quảng Nam                                                            </option>
+                                                                                                                        <option value=" Quảng Nam">
+                                                                Bắc Giang                                                            </option>
+                                                                                                                        <option value="Bắc Giang ">
+                                                                Quảng Ninh                                                            </option>
+                                                                                                                        <option value="Quảng Ninh">
+                                                                Lạng Sơn                                                            </option>
+                                                                                                                        <option value=" Lạng Sơn">
+                                                                Thái Nguyên                                                            </option>
+                                                                                                                        <option value=" Thái Nguyên">
+                                                                Hòa Bình                                                            </option>
+                                                                                                                        <option value="Hòa Bình ">
+                                                                Yên Bái                                                            </option>
+                                                                                                                        <option value=" Yên Bái">
+                                                                Sơn La                                                            </option>
+                                                                                                                        <option value=" Sơn La ">
+                                                                Lai Châu                                                            </option>
+                                                                                                                        <option value="Lai Châu">
+                                                                Điện Biên                                                            </option>
+                                                                                                                        <option value="Điện Biên">
+                                                                Lào Cai                                                            </option>
+                                                                                                                        <option value="Lào Cai">
+                                                                Tuyên Quang                                                            </option>
+                                                                                                                        <option value="Tuyên Quang">
+                                                                Bắc Kạn                                                            </option>
+                                                                                                                        <option value=" Bắc Kạn ">
+                                                                Cao Bằng                                                            </option>
+                                                                                                                        <option value=" Cao Bằng">
+                                                                Phú Thọ                                                            </option>
+                                                                                                                        <option value="Phú Thọ ">
+                                                                Vĩnh Phúc                                                            </option>
+                                                                                                                        <option value="Vĩnh Phúc ">
+                                                                Ninh Bình                                                            </option>
+                                                                                                                        <option value="Ninh Bình  ">
+                                                                Thừa Thiên Huế                                                            </option>
+                                                                                                                        <option value="Thừa Thiên Huế">
+                                                                Quảng Trị                                                            </option>
+                                                                                                                        <option value="Quảng Trị">
+                                                                Quảng Bình                                                            </option>
+                                                                                                                        <option value="Quảng Bình">
+                                                                Hà Tĩnh                                                            </option>
+                                                                                                                        <option value=" Nghệ An   ">
+                                                                Nghệ An                                                            </option>
+                                                                                                                        <option value="Thanh Hóa ">
+                                                                Thanh Hóa                                                            </option>
+                                                                                                                        <option value="Nam Định ">
+                                                                Nam Định                                                            </option>
+                                                                                                                        <option value=" Hà Nam ">
+                                                                Hà Nam                                                            </option>
+                                                                                                                        <option value="Thái Bình ">
+                                                                Thái Bình                                                            </option>
+                                                                                                                        <option value=" Hưng Yên">
+                                                                Hưng Yên                                                            </option>
+                                                                                                                        <option value="Hải Dương">
+                                                                Hải Dương                                                            </option>
+                                                                                                                        <option value="  Bắc Ninh">
+                                                                Bắc Ninh                                                            </option>
+                                                                                                                        <option value=" Hà Giang ">
+                                                                Hà Giang                                                            </option>
+                                                                                                                    </select>
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </label>
+                                                    <div name="province_error" class="text-danger"></div>
+                                                </div>
+                                                <div class="col-md-6" id="show-distridct"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group clearfix">
+                                        <div class="column-first-child">
+                                            <label for="note">Ghi chú:</label>
+                                        </div>
+                                        <div class="column-last-child">
+                                            <textarea class="textarea" maxlength="500" name="note" rows="3" placeholder="Ví dụ: Chuyển hàng ngoài giờ hành chính"></textarea>
+                                            <div name="note_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                <hr>
+                                                          <!-- End: Step 2 -->
+                            </div> 
+                            <button type="submit" class="le-button fluid-width text-center" title="Xác nhận và gửi đơn hàng">Xác nhận và gửi đơn hàng</button>
+                            <!-- delivery-address -->
+                            </form>
+                        </div>                 
+                 </div>
+                    
+                    <!-- Cart info -->
+                    <div class="col-md-4 panel-order">
+                    
+                                
+
+    <h2 class="step-title">Thông tin giỏ hàng <span class="item-checkout">San Pham (<?php echo $result['qty'] ?>)</span></h2>
+    <div class="panel-order-info">
+           <?php  $total =0;
+           foreach($_SESSION['cart'] as $result){ ?>
+        <div class="cart-items">
+                        <div class="list_item clearfix">
+                <div class="items-cell-thumbnail">
+                    <a class="thumb-holder" target="_blank" href="" title="<?php echo $result['product_name'] ?>">
+                            <img src="<?php echo Core::base_url().'file_upload/'.$result['image_avata']?>" alt="<?php echo $result['product_name'] ?>">
+                    </a>
+                </div>
+                <div class="items-cell-detail clearfix">
+                    <div class="items-cell-title title-holder">
+                        <div class="name">
+                            <a href="http://binhvan.web5s.com.vn/san-pham/vest-be-trai-thoi-trang"><span><?php echo $result['product_name']; ?></span></a>
+                        </div>
+                        <div class="brand">
+                            <a title="" target="_blank" href=""></a>
+                                                    </div>
+                    </div>
+                    <div class="items-cell-price">
+                        <div class="ut-price"><?php echo number_format($result['price']); ?></div>
+                        <div class="quantity"><?php echo $result['qty']; ?></div>
+                        <div class="tt-price"><?php echo number_format($result['price'] * $result['qty']);  ?></div>
+                    </div>
+                </div>
+            </div>
+                    <?php $total += ($result['price'] * $result['qty']); } ?>    <!-- list_item -->
+        </div> 
+        <!-- cart-items -->
+        <div class="orderSummary">
+           
+                <table class="table">
+                    <tbody>
+                        <tr id="row_total_amount">
+                            <td id="cell_total_amount_label"><label>Tạm tính:</label></td>
+                            <td id="cell_total_amount_value" class="text-right">
+                                <strong><?php echo $tota; ?></strong>
+                            </td>
+                        </tr>
+                        <tr id="row_delivery_fee">
+                            <td id="cell_delivery_fee_label">
+                                Chuyển hàng tận nơi                                <i class="sprites icon-question tooltipster-link" data-toggle="popover" data-placement="top" data-content="&lt;a target=&#39;_blank&#39; href=&#39;&#39;&gt; Xem chính sách giao hàng &lt;/a&gt;" data-original-title="" title=""></i>
+                            </td>
+                            <td id="cell_delivery_fee_value" class="text-right">
+                                <strong class="text-green" id="total_fee_ship_amount">35.000₫</strong>
+                            </td>
+                        </tr>
+                        <tr id="row_saleOff">
+                            <td colspan="2">
+                                <table class="table web5s-coupon">
+                                    <tbody>
+                                    <tr id="coupon_result">
+                                        <td>
+                                            <span id="cp_note" class="text-danger"></span>
+                                            <span class="couponed"></span>
+                                        </td>
+                                        <td class="text-right">
+                                            <strong class="value text-green"></strong>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td><td>
+                        </td></tr>
+                        <tr>
+                            <td colspan="3"></td>
+                        </tr>
+                        <tr id="row_total_purchase">
+                            <td id="cell_total_purchase_label" class="fs15">Tổng tiền thanh toán</td>
+                            <td id="cell_total_purchase_value" class="text-right">
+                                <strong><?php $ship = 35000; echo number_format($total+$ship); ?>₫</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <!-- table -->
+                
+         </div> 
+        <!-- orderSummary -->
+    </div>
+</div>                </div>
+            </div>
+        </div>
+    </div>
+   
+   
+       

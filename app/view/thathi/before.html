@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<?php session_start(); 
+?>
+<!DOCTYPE html>
 <!-- saved from url=(0028)<?php echo Core::base_url(); ?> -->
 <html lang="vi" xml:lang="vi" xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns# fb: http://www.facebook.com/2008/fbml" class=" js csstransforms3d">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Head -->
-        <title>Milano's - Multipurpose Resposive Web5s Theme</title>
+        <title>THATHI FASHION</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
         <!-- Favicon -->
         <link rel="shortcut icon" href="" type="image/x-icon">
@@ -24,7 +26,7 @@
         <link rel="canonical" href="<?php echo Core::base_url(); ?>">
         <!-- Java Script 
             ================================================== -->
-        <script type="text/javascript">
+         <script>
             var site_url 	= '<?php echo Core::base_url(); ?>';
             var base_url 	= '<?php echo Core::base_url(); ?>';
             var public_url 	= '<?php echo Core::base_url(); ?>';
@@ -184,53 +186,83 @@
                                 <div class="web5s-minicart pull-right">
                                     <div class="tongle">
                                         <i class="img-cart"></i>
+                                        
+                                        
+                                        
+                                        <?php if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){
+                                              $total = 0;
+                                              $total1= 0;
+                                              $qty = 0;
+                                           
+                                          ?>
                                         <div class="cart-price-total">
                                             <p class="numbertw">
                                                 <span class="number1">
                                                 <span class="number1">Giỏ hàng:</span>
                                                 <span class="number2">
-                                                <a href="<?php echo Core::base_url(); ?>gio-hang" rel="nofollow" title="Tổng số sản phẩm">(<span id="cart_total">1</span>)</a>
+                                                <a href="<?php echo Core::base_url(); ?>addorder" rel="nofollow" title="Tổng số sản phẩm">
+                                                (<span id="cart_total">
+                                                <?php foreach($_SESSION['cart'] as $item){ 
+                                                       $qty += $item['qty']; 
+                                                       
+                                                      $total1 += ($item['price'] * $item['qty']);
+                                                  }  echo $qty;?>
+                                                </span>)
+                                                </a>
                                                 </span>
                                                 </span>
                                             </p>
                                             <p class="subtotal">
                                                 <span>
                                                 <a rel="nofollow" class="price" title="Tổng tiền thanh toán">
-                                                <span id="cart_total">560.000₫</span>
+                                                <span id="cart_total"><?php echo number_format($total1);  ?></span>
                                                 </a>
                                                 </span>
                                             </p>
-                                        </div>
-                                    </div>
-                                    <div class="product-cart">
+                                        </div>          
+                                     </div> 
+                                     
+                                              <div class="product-cart">
                                         <div class="content-inner">
                                             <ol class="mini-products-list">
+                                            <?php   foreach($_SESSION['cart'] as $result){ ?>
                                                 <li class="item clearfix">
-                                                    <a class="product-image" target="_blank" title="Vest bé trai thời trang" href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang">
-                                                    <img alt="Vest bé trai thời trang" src="<?php echo View::getPathView(); ?>image/thumb.php">
+                                                    <a class="product-image" target="_blank" title="<?php echo $result['product_name'] ?>" href="<?php echo Core::base_url().'productdetail?id='.$result['id']; ?>">
+                                                    <img width="78px" height="92px" alt="<?php echo $result['product_name'] ?>" src="<?php echo Core::base_url().'file_upload/'.$result['image_avata']?>">
                                                     </a>
                                                     <div class="product-details">
-                                                        <a class="btn-remove" title="Xóa sản phẩm khỏi giỏ hàng" href="<?php echo Core::base_url(); ?>cart/del/16920.html">
+                                                        <a class="btn-remove" title="Xóa sản phẩm khỏi giỏ hàng" href="<?php echo Core::base_url().'unsetpro?id='.$result['id']; ?>">
                                                         <i class="fa fa-close"></i> Xóa                                </a>
-                                                        <p class="product-name"><a href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang" target="_blank" title="1 Sản phẩm">Vest bé trai thời trang</a></p>
-                                                        <span class="price">560.000₫</span>                    
+                                                        <p class="product-name"><a href="<?php echo Core::base_url(); ?>" target="_blank" title=""><?php echo $result['product_name'] ?></a></p>
+                                                        <span class="price"><?php echo number_format($result['price'])?> x <?php echo $result['qty'] ?></span>                  
                                                     </div>
                                                 </li>
+                                                <?php $total += ($result['price'] * $result['qty']);  } ?>
                                             </ol>
                                             <div class="total-mini-cart">
                                                 <p class="subtotal">
+                                                
                                                     <span class="label">Tổng số:</span>
-                                                    <span class="price">560.000₫</span>
+                                                    <span class="price"><?php echo number_format($total); ?></span>
                                                 </p>
                                             </div>
                                             <div class="cart-actions">
-                                                <a href="<?php echo Core::base_url(); ?>order/checkout.html" title="Thanh toán">
+                                                <a href="<?php echo Core::base_url(); ?>home/checkout" title="Thanh toán">
                                                 Thanh toán                    </a>
-                                                <a href="<?php echo Core::base_url(); ?>gio-hang" title="Chi tiết giỏ hàng">Xem giỏ hàng</a>
+                                                <a href="<?php echo Core::base_url(); ?>home/viewcart" title="Chi tiết giỏ hàng">Xem giỏ hàng</a>
                                             </div>
                                         </div>
-                                    </div>
+                                  
+                                    </div>  
                                 </div>
+                                         <?php }else{ ?>
+                                            <div>
+                                            <p>
+                                                <span>Giỏ hàng trống:</span>   
+                                            </p>
+                      
+                                        </div>
+                                        <?php } ?>
                             </div>
                             <div class="wishlist">
                                 <a href="<?php echo Core::base_url(); ?>san-pham-yeu-thich">
@@ -244,10 +276,10 @@
                             <!-- Ajax Load auto -->
                             <script type="text/javascript">
                                 // Load san pham da yeu thich
-                                ajax_load_item('.wishlist', '<?php echo Core::base_url(); ?>product/load_product_favorite.html', 'json', '#favorite_total');
+                                //ajax_load_item('.wishlist', '<?php echo Core::base_url(); ?>product/load_product_favorite.html', 'json', '#favorite_total');
                                 
                                 // Load san pham da them vao so sanh
-                                ajax_load_item('.wishlist', '<?php echo Core::base_url(); ?>product/load_product_compare.html', 'json', '#compare_total');
+                                //ajax_load_item('.wishlist', '<?php echo Core::base_url(); ?>product/load_product_compare.html', 'json', '#compare_total');
                             </script>
                         </div>
                     </div>

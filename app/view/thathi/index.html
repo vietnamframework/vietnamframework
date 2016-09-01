@@ -1,6 +1,6 @@
 
             <!-- Start: Content Wrapper -->
-            
+
             <div id="web5s_content">
                 <!-- Start: Slideshow -->
                 <?php
@@ -92,7 +92,7 @@
                                                     <div class="item-inner">
                                                         <div class="item-img">
                                                             <div class="item-img-info">
-                                                                <a href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang" title="<?php $product['product_name'] ?>" class="product-image">
+                                                                <a href="<?php echo Core::base_url().'home/productdetail?id='.$product['id']?>" title="<?php $product['product_name'] ?>" class="product-image">
                                                                 <img src="<?php echo Core::base_url().'file_upload/'.$product['image_avata'];?>" alt="0">
                                                                 </a>
                                                                 <div class="sale-label sale-top-right">
@@ -105,7 +105,7 @@
                                                         <div class="item-info">
                                                             <div class="info-inner">
                                                                 <div class="item-title">
-                                                                    <a title="<?php echo $product['product_name']; ?>" href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang"><?php echo $product['product_name']; ?></a>
+                                                                    <a title="<?php echo $product['product_name']; ?>" href="<?php echo Core::base_url().'home/productdetail?id='.$product['id']?>"><?php echo $product['product_name']; ?></a>
                                                                 </div>
                                                                 <div class="item-content">
                                                                     <div class="item-price">
@@ -124,7 +124,7 @@
                                                                         <div class="add_cart">
                                                                             <!-- Add cart -->
                                                                             <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16920" title="Yêu thích sản phẩm"></a>
-                                                                            <a href="<?php echo Core::base_url(); ?>san-pham/vest-be-trai-thoi-trang" class="button btn-cart" title="Mua hàng">
+                                                                            <a href="<?php echo Core::base_url().'home/productdetail?id='.$product['id']; ?>" class="button btn-cart" title="Mua hàng">
                                                                             <span>Mua hàng</span>
                                                                             </a>
                                                                             <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16920" title="Thêm vào so sánh"></a>
