@@ -81,6 +81,7 @@
                                         <div class="pdt-content products-grid">
                                         	<?php 
                                             if(count($data['product']) > 0) {
+                                            	$product_length = count($data['product']);
                                             	$count = 1;
                                             	foreach($data['product'] as $product) {
                                             		if($count == 1) {
@@ -144,6 +145,9 @@
                                                 </div>
                                             <?php
                                             		if($count%6 == 5) {
+                                            			echo '</ul>';
+                                            		} else if ($count == $product_length)
+                                            		{
                                             			echo '</ul>';
                                             		}
                                             	$count++;
