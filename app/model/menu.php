@@ -33,7 +33,7 @@ class Menu_model extends VNModel{
      */
     public function get_list_menu($limmit = 0, $offset = 0) {
         try{
-            $sql = "SELECT *,'0' as chk ,(select count(*) from menu m where m.parent = t.id) have_child FROM ".$this->table .' t';
+            $sql = "SELECT *,'0' as chk ,(select count(*) from menu m where m.parent = t.id) have_child FROM " . $this->table .' t';
             if($limmit == 0 && $offset == 0) {
                 // don't anything
                 return $this->query($sql);
@@ -102,4 +102,47 @@ class Menu_model extends VNModel{
         
     }    
     
+    public function gen_menu() {
+		$data = $this->get_list_menu();
+		
+		$menu_tree = array();
+		if(count($data) > 0) {
+			foreach($data as $menu) {
+				
+				$menu_parent = array();
+				if($menu['parent'] == 0) {
+					$menu_parent = $menu;
+					if($menu['have_child'] > 0) {
+						$child = array();
+						foreach($data as $child_menu) {
+							if($menu['id'] == $child_menu['parent']) {
+								$child[] = $child_menu;
+							}
+						}
+						$menu_parent['child'] = $child;
+						
+					}
+					$menu_tree[] = $menu_parent;
+				}
+				
+			}
+			
+			foreach($menu_tree as $tree) {
+				$child_has = '';
+				$menu_sub = '';
+				if(isset($tree['child']) && count($tree['child']) > 0) {
+					$child_has = '<span>+</span>';
+					$menu_sub = '<ul class="submenu">';
+					foreach($tree['child'] as $child) {
+						$menu_sub .= '<li><a class="" href="'.Core::base_url().$child['link'].'" title="'.$child['title'].'">'.$child['title'].'</a></li>';
+					}
+					$menu_sub .= '</ul>';
+				}
+				$menu_gnav =  '<li><a class="" href="'.Core::base_url().$tree['link'].'" title="'.$tree['title'].'">'.$tree['title'].$child_has.'</a>'.$menu_sub.' </li>';
+				echo $menu_gnav;
+			}
+			
+		}
+
+	}
 }

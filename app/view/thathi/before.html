@@ -131,37 +131,10 @@
                             </div>
                             <div class="menu-dropdown">
                                 <ul class="mobile-menu">
-                                    <li>
-                                        <a href="<?php echo Core::base_url(); ?>" title="Trang chủ">Trang chủ</a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="<?php echo Core::base_url(); ?>danh-muc/thoi-trang-nam" title="Thời trang nam">
-                                        Thời trang nam<span>+</span>                    </a>
-                                        <!-- Sub categories -->
-                                        <ul class="submenu">
-                                            <li><a class="" href="<?php echo Core::base_url(); ?>danh-muc/ao-so-mi" title="Áo sơ mi">
-                                                Áo sơ mi                                     </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="" href="<?php echo Core::base_url(); ?>danh-muc/thoi-trang-nu" title="Thời trang nữ">
-                                        Thời trang nữ<span>+</span>                    </a>
-                                        <!-- Sub categories -->
-                                        <ul class="submenu">
-                                            <li><a class="" href="<?php echo Core::base_url(); ?>danh-muc/vay" title="Váy">
-                                                Váy                                     </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="" href="<?php echo Core::base_url(); ?>danh-muc/thoi-trang-tre-em" title="Thời trang trẻ em">
-                                        Thời trang trẻ em                    </a>
-                                    </li>
-                                    <li>
-                                        <a class="" href="<?php echo Core::base_url(); ?>danh-muc/phu-kien" title="Phụ kiện">
-                                        Phụ kiện                    </a>
-                                    </li>
+                                    <?php 
+                                     	$menu_model = new Menu_model();
+        								$menu_model->gen_menu();
+                                    ?>
                                 </ul>
                             </div>
                             <!-- End: Categories -->            
