@@ -156,18 +156,17 @@
                                 ajax_load_item('.cart-price-total', '<?php echo Core::base_url(); ?>cart/load_cart.html', 'json', '#cart_total');
                             </script>
                             <div class="mycart">
-                                <div class="web5s-minicart pull-right">
-                                    <div class="tongle">
-                                        <i class="img-cart"></i>
-                                        
-                                        
-                                        
-                                        <?php if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){
+                            <?php if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){
                                               $total = 0;
                                               $total1= 0;
                                               $qty = 0;
                                            
                                           ?>
+                                <div class="web5s-minicart pull-right">
+                                    <div class="tongle">
+                                        <i class="img-cart"></i>
+                                        
+                                        
                                         <div class="cart-price-total">
                                             <p class="numbertw">
                                                 <span class="number1">
@@ -195,7 +194,7 @@
                                         </div>          
                                      </div> 
                                      
-                                              <div class="product-cart">
+                                    <div class="product-cart">
                                         <div class="content-inner">
                                             <ol class="mini-products-list">
                                             <?php   foreach($_SESSION['cart'] as $result){ ?>
@@ -229,12 +228,29 @@
                                     </div>  
                                 </div>
                                          <?php }else{ ?>
-                                            <div>
-                                            <p>
-                                                <span>Giỏ hàng trống:</span>   
-                                            </p>
-                      
-                                        </div>
+                                           <div class="web5s-minicart pull-right">
+        <div class="tongle">
+            <i class="img-cart"></i>
+            <div class="cart-price-total">
+                <p class="numbertw">
+                    <span class="number1">
+                            <span class="number1">Giỏ hàng:</span>
+                            <span class="number2">
+                                <a title="Tổng số sản phẩm" rel="nofollow" href="http://milano.web5s.com.vn/gio-hang">(<span id="cart_total">0</span>)</a>
+                            </span>
+                    </span>
+                </p>
+                <p class="subtotal">
+                    <span>
+                        <a title="Giỏ hàng trống" class="price" rel="nofollow">
+                            <span id="cart_total">Giỏ hàng trống</span>
+                        </a>
+                    </span>
+                </p>
+            </div>
+        </div>
+        
+            </div>
                                         <?php } ?>
                             </div>
                             <div class="wishlist">
