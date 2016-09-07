@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 Class News_Controller extends Frontend_Controller {
     public function Index() {
         $param = $_GET;

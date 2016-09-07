@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class URLFriend extends VNModel {
     protected $table = "url_friendly";
     

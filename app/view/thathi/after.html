@@ -15,40 +15,45 @@
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <script type="text/javascript">
-                                    (function($) {
-                                        $(document).ready(function() {
-                                            // Form Newsletter action
-                                            var newsletter = $('form#newsletter-form');
-                                            newsletter.nstUI({
-                                                method: 'formAction',
-                                                formAction: {
-                                                    field_load: newsletter.attr('_field_load'),
-                                                    event_complete: function() {
-                                                        _alert('Bạn đã đăng ký nhận mail thành công');
-                                                        newsletter.trigger('reset');
-                                                        return false;
-                                                    },
-                                                    event_error_: function() {
-                                                        // window.parent.location = login.attr('_redirect');
-                                                    }
-                                                }
-                                            });
+                                	function isEmail(email) {
+										  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+										  return regex.test(email);
+									}
+                                    
+                                    $(document).ready(function() {
+                                        $('button[name="submit"]').click(function() {
+                                        	email_text = $('#email_magezine').val();
+                                        	
+                                        	email_valid = isEmail(email_text);
+                                        	
+                                        	if(email_valid ==  true) {
+                                        		$.post( "<?php echo Core::base_url(); ?>mailmagazine", { email: email_text})
+												  .done(function(result) {
+												  	data = JSON.parse(result);
+												    if(data.status == 'OK') {
+												    	alert('Đã đămg ký thành công: ' + email_text);
+												    } else {
+												    	alert(data.message);
+												    }
+												  });
+                                        	}
+                                        	
+                                        	return false;
                                         });
-                                    })(jQuery);
+                                    });
+                                    
                                 </script>
                                 <div class="newsletter">
                                     <h4>Nhận tin khuyến mại</h4>
                                     <p>Nhập email để nhận thông tin khuyến mại sản phẩm với giá hấp dẫn.</p>
-                                    <form id="newsletter-form" action="<?php echo Core::base_url(); ?>newsletter.html" method="post">
                                         <div class="input-group">
-                                            <input type="text" name="email" size="18" class="form-control email" placeholder="Nhập email của bạn..." _autocheck="true">
+                                            <input id="email_magezine" type="text" name="email" size="18" class="form-control email" placeholder="Nhập email của bạn..." _autocheck="true">
                                             <span class="input-group-btn">
                                             <button class="btn btn-primary" name="submit" type="submit">
                                             Đăng ký                </button>
                                             </span>
                                         </div>
                                         <div name="email_error" class="text-danger"></div>
-                                    </form>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12">

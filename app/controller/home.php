@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 Class Home_Controller extends Frontend_Controller {
     public function Index() {
     	
@@ -113,4 +113,18 @@ Class Home_Controller extends Frontend_Controller {
 			$data['status'] = 'OK';
 			return $this->renderTemplateFronend('checkout',$data); // homepage
 		}
+		
+		public function gioithieu() {
+			
+			Session::set('template', 'thathi');
+			return $this->renderTemplateFronend('gioithieu'); // homepage
+		}
+		
+		public function lienhe() {
+			
+			Session::set('template', 'thathi');
+			return $this->renderTemplateFronend('lienhe'); // homepage
+		}
+
+	
 }/** end Class **/

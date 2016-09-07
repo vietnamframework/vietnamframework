@@ -1,0 +1,124 @@
+﻿
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                    <li property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" href="http://milano.web5s.com.vn/" title="Trang chủ">
+                        Trang chủ                                    </a>
+                        <span> —› </span>
+                    </li>
+                    <li property="itemListElement" typeof="ListItem">
+                        <span property="item" typeof="WebPage">Giới thiệu</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-md-9 col-sm-push-3">
+			   <script>
+			function initialize() {
+			  var mapProp = {
+			    center:new google.maps.LatLng(10.8248726, 106.6790383),
+			    zoom:18,
+			    mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+			</script> 
+                <div id="web5s-contact">
+                    <div style="height: 500px;" id="googleMap">
+                       
+                    </div>
+                    <h1 class="title">Liên hệ với chúng tôi</h1>
+                    <ul>
+                        <li>
+                            <strong>Địa chỉ:</strong> Tầng 6, Toà nhà iNET, 247 Cầu Giấy, Q. Cầu Giấy, Hà Nội                
+                        </li>
+                        <li>
+                            <strong>Điện thoại:</strong> (04)-3838.5588                
+                        </li>
+                        <li>
+                            <strong>Fax:</strong> (04)-3793.0979                
+                        </li>
+                        <li>
+                            <strong>Email:</strong> support@inet.vn                
+                        </li>
+                    </ul>
+                    <form id="contact" class="t-form form_action" action="">
+                        <div class="row field-row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="param_name">Tên đầy đủ(<span class="text-danger">*</span>)</label>
+                                <input class="le-input" id="param_name" value="" name="name">
+                                <div name="name_autocheck" class="autocheck"></div>
+                                <div name="name_error" class="text-danger"></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="param_email">Email(<span class="text-danger">*</span>)</label>
+                                <input class="le-input" id="param_email" value="" name="email" _autocheck="true">
+                                <div name="email_autocheck" class="autocheck"></div>
+                                <div name="email_error" class="text-danger"></div>
+                            </div>
+                        </div>
+                        <!-- /.field-row -->
+                        <div class="row field-row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="param_phone">Di động</label>
+                                <input class="le-input" id="param_phone" value="" name="phone" _autocheck="true">
+                                <div name="phone_autocheck" class="autocheck"></div>
+                                <div name="phone_error" class="text-danger"></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Địa chỉ</label>
+                                <input class="le-input" id="param_address" value="" name="address" _autocheck="true">
+                                <div name="address_autocheck" class="autocheck"></div>
+                                <div name="address_error" class="text-danger"></div>
+                            </div>
+                        </div>
+                        <!-- /.field-row -->
+                        <div class="field-row">
+                            <label for="param_title">Tiêu đề</label>
+                            <input class="le-input" id="param_title" value="" name="title" _autocheck="true">
+                            <div name="ptitle_autocheck" class="autocheck"></div>
+                            <div name="title_error" class="text-danger"></div>
+                        </div>
+                        <!-- /.field-row -->
+                        <div class="field-row">
+                            <label for="param_content">Nội dung(<span class="text-danger">*</span>)</label>
+                            <textarea rows="8" class="le-input" name="content" id="param_content" _autocheck="true"></textarea>
+                            <div name="content_autocheck" class="autocheck"></div>
+                            <div name="content_error" class="text-danger"></div>
+                        </div>
+                        <!-- /.field-row -->
+                        <div class="buttons-holder">
+                            <input type="submit" value="Gửi liên hệ" class="le-button huge">
+                        </div>
+                        <!-- /.buttons-holder -->
+                    </form>
+                    <!-- /.contact-form -->
+                </div>
+                <!-- End: Contact -->                        
+            </div>
+            <div class="sidebar col-md-3 col-sm-pull-9">
+                <!-- Start: Deal-->
+                <div class="pdt-content products-grid">
+                    <ul class="pdt-list">
+                    </ul>
+                </div>
+                <!-- End: Deal-->
+                <!-- Start: Banner-->
+                <div class="banner-left mt30">
+                    <div class="eff-v3">
+                    </div>
+                </div>
+                <!-- End: Deal-->
+            </div>
+        </div>
+    </div>
+</div>
