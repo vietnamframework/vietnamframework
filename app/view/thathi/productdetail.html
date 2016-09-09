@@ -1,4 +1,11 @@
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
             <!-- Start: Top Home Content -->
             <div class="main-container">
                 <div class="container">
@@ -75,14 +82,9 @@
                 
         <div class="pull-right">
             <ul class="share_buttons">
-    <li class="plusone">
-        <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1466240710525" name="I1_1466240710525" src="./image/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
-    </li>
-    <li class="fa_send">
-        <div class="fb-send fb_iframe_widget" data-href="" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=608949129286147&amp;container_width=0&amp;href=http%3A%2F%2Fbinhvan.web5s.com.vn%2Fsan-pham%2Fvest-be-trai-thoi-trang&amp;locale=vi_VN&amp;sdk=joey"><span style="vertical-align: bottom; width: 47px; height: 20px;"><iframe name="f1b7d91be66c5a4" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:send Facebook Social Plugin" src="./image/send.html" style="border: none; visibility: visible; width: 47px; height: 20px;" class=""></iframe></span></div>
-    </li>
+
     <li class="facebook">
-        <div class="fb-like fb_iframe_widget" data-href="" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=608949129286147&amp;container_width=0&amp;href=http%3A%2F%2Fbinhvan.web5s.com.vn%2Fsan-pham%2Fvest-be-trai-thoi-trang&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=false"><span style="vertical-align: bottom; width: 141px; height: 20px;"><iframe name="f1802833081d4e8" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./image/like.html" style="border: none; visibility: visible; width: 141px; height: 20px;" class=""></iframe></span></div>
+        <div class="fb-like" data-href="https://www.facebook.com/THATHI.FASHION/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
     </li>
 </ul>
 <style type="text/css">
@@ -118,11 +120,11 @@
                     <input name="qty" type="text" value="1">
                 <a class="plus" href="javascript:void(0)"></a>
             </div>
-             
+             <input type="hidden" value="<?php echo $data[0]['id'] ?>" name="id" >
+	             <button type="submit" class="le-button huge" > ĐẶT MUA</button>
         </div>
   		
-	        	 <input type="hidden" value="<?php echo $data[0]['id'] ?>" name="id" >
-	             <button type="submit" class="le-button huge" > ĐẶT MUA</button>
+	        	 
              </form>
     
     <div class="buttons-holder">
@@ -135,7 +137,7 @@
     <div class="spt-info">
         <i class="fa fa-phone"></i>
         <div class="call-content">
-            Gọi mua hàng: <b>0904.456 789 - 1900.6868</b>
+            Gọi mua hàng: <b>0945779684 -  0918525076</b>
             <span>(từ 8h15 đến 17h15 hàng ngày)</span>
         </div>
     </div>
@@ -250,20 +252,7 @@
 </div>
 
 <!-- Start: Products viewed-->
-<div class="product-review clearfix">
-    <div class="col-md-2">
-        <p class="title-review">Sản phẩm đã xem</p>
-    </div>
-    <div class="col-md-10">
-        <ul class="image-review clearfix">
-                        <li class="item clearfix">
-                <a href="" title="Vest bé trai thời trang">
-                    <img src="./image/thumb(8).php" alt="0">
-                </a>
-            </li>
-                    </ul>
-    </div>
-</div><!-- End: Products viewed-->                </div>
+                </div>
             </div>
             <!-- End: Top Home Content -->
             

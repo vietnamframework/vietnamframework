@@ -87,7 +87,7 @@ Class Home_Controller extends Frontend_Controller {
 		
 		public function finish(){
 			$id = $_POST['id'];
-			//var_dump($id);
+			//var_dump($marge);
 			$name = $_POST['name'];
 			$phone = $_POST['phone'];
 			$email = $_POST['email'];
@@ -106,7 +106,8 @@ Class Home_Controller extends Frontend_Controller {
 			$order-> update($orderid,$status);
 			//echo $userid; die();
 			foreach ($id as $item){
-			$detail -> create_orderdetail($item, $orderid); //thêm dữ liệu vào bảng orderdetail
+		    $tmp = explode("_", $item);
+			$detail -> create_orderdetail($tmp[0],$orderid,$tmp[1]); //thêm dữ liệu vào bảng orderdetail
 			}
 			unset($_SESSION['cart']);
 			Session::set('template', 'thathi');

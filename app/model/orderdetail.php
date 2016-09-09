@@ -2,7 +2,6 @@
 class orderdetail_Model extends VNModel {
 	// khai bao ten bang
 	protected $table ='orderct';
-	protected $table1 ='user';
 	public function get_list_orderdetail($limmit = 0, $offset = 0) {
 		try{
 			$sql = "SELECT * FROM ".$this->table;
@@ -23,12 +22,23 @@ class orderdetail_Model extends VNModel {
 			return false;
 		}
 	}	
-	
-	public function create_orderdetail($idpro,$idorder) {
+	public function get_order_by($id) {
+		try{
+			$sql = "SELECT product.product_name, product.price, orderct.quantity FROM orderct
+    INNER JOIN orderthathi ON orderct.idorder = orderthathi.id
+    INNER JOIN product ON orderct.idpro = product.id WHERE orderct.idorder= :id";
+			$param = array('id' => $id);
+			return $this->query($sql,$param);
+		} catch (Exception $e) {
+			VNLog::debug_var($this->log_name, $e->getMessage());
+			return false;
+		}
+	}
+	public function create_orderdetail($idpro,$idorder,$quantity) {
 		try {
-			$sql = "INSERT INTO orderct (idpro,idorder)
-              VALUES (:idproduct,:iddonhang)";
-			$param = array( 'idproduct' => $idpro,'iddonhang'=> $idorder);
+			$sql = "INSERT INTO orderct (idpro,idorder,quantity)
+              VALUES (:idproduct,:iddonhang,:soluong)";
+			$param = array( 'idproduct' => $idpro,'iddonhang'=> $idorder,'soluong'=> $quantity);
 			//var_dump($param); die();
 			$result= $this->execute($sql, $param);
 			return true;

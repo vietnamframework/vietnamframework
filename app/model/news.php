@@ -1,10 +1,10 @@
 <?php
 class News_model extends VNModel{
     //table news
-    protected $table = 'content';
+    protected $table = 'orderthathi';
     
     // name log file
-    protected $log_name = 'news_model_';
+    protected $log_name = 'order_model_';
     
     
     /**

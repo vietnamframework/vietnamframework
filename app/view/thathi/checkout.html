@@ -15,7 +15,7 @@
                             <div class="delivery-address">
                             <form action="<?php echo Core::base_url();?>home/finish" method="post">
                             <?php foreach($_SESSION['cart'] as $item) {?>
-                               <input type="hidden" name="id[]" value="<?php echo $item['id']; ?>"/>
+                               <input type="hidden" name="id[]" value="<?php echo $item['id'].'_'.$item['qty'] ;?>"/>
                                <?php }?>
                                     <div class="form-group clearfix">
                                         <div class="column-first-child">
@@ -250,7 +250,7 @@
                 <div class="items-cell-detail clearfix">
                     <div class="items-cell-title title-holder">
                         <div class="name">
-                            <a href="http://binhvan.web5s.com.vn/san-pham/vest-be-trai-thoi-trang"><span><?php echo $result['product_name']; ?></span></a>
+                            <a href=""><span><?php echo $result['product_name']; ?></span></a>
                         </div>
                         <div class="brand">
                             <a title="" target="_blank" href=""></a>
