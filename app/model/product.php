@@ -140,4 +140,24 @@ class Product_model extends VNModel{
             return false;
         }
     }
+    public function search_product($param) {
+    	try{
+    		$sql = "SELECT * FROM product WHERE product_name LIKE '%$param%'";
+    			return $this->query($sql);  
+    		}
+    		catch (Exception $e) {
+    		VNLog::debug_var($this->log_name, $e->getMessage());
+    		return false;
+    	}
+    }
+    public function relate($cate_id){
+            try{
+            $sql = "SELECT * FROM product WHERE category_id=:id";
+            return $this->query($sql,array("id"=>$cate_id));
+        } catch (Exception $e) {
+            VNLog::debug_var($this->log_name, $e->getMessage());
+            return false;
+        }  	
+    }
+    
 }

@@ -2,7 +2,7 @@
 window.replace_image_tag = function (value) {
 		return value.replace(/<?!?(img|a)[^>]*>/, '*IMAGE*');
 	};
-var category_data = <?php echo $data['category']; ?>;
+var category_data = <?php echo $data['menu']; ?>;
 var language_data = <?php echo $data['language']; ?>;
 window.return_language_name = function(value) {
 	if(value == '' || isNaN(parseInt(value))) return null;
@@ -79,7 +79,7 @@ window.return_value = function(value){
      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newproduct()">New product</a>
      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editproduct()">Edit product</a>
      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyproduct()">Remove product</a>
-     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="transproduct()">Trans product</a>
+     <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="transproduct()">Trans product</a> -->
  </div>
  
  <div id="dlg" class="easyui-dialog" style="width:1028px;height:650px;padding:10px 20px; display:none"
@@ -172,8 +172,8 @@ window.return_value = function(value){
               
          <div class="fitem">
              <label>Category:</label>
-             <input name="category_id"  id="read" data-options="valueField:'id',textField:'category_name' ,url:'<?php echo Core::base_url().'category_backend/listdata';?>'"
-              class="easyui-combobox" value="category_name" >
+             <input name="category_id"  id="read" data-options="valueField:'id',textField:'title' ,url:'<?php echo Core::base_url().'menu_backend/listdata';?>'"
+              class="easyui-combobox" value="menu_name" >
          </div>
          
         <div class="fitem">

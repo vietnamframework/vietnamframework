@@ -5,7 +5,7 @@
             <div class="col-xs-12">
                 <ul vocab="http://schema.org/" typeof="BreadcrumbList">
                     <li property="itemListElement" typeof="ListItem">
-                        <a property="item" typeof="WebPage" href="http://milano.web5s.com.vn/" title="Trang chủ">
+                        <a property="item" typeof="WebPage" href="" title="Trang chủ">
                         Trang chủ                                    </a>
                         <span> —› </span>
                     </li>
@@ -42,17 +42,18 @@
                             <strong>Email:</strong> support@thathi.vn                
                         </li>
                     </ul>
-                    <form id="contact" class="t-form form_action" action="">
-                        <div class="row field-row">
+                    <h3 style="font-size:18px;color:blue;padding:0px 150px 50px 0px;"><?php if(isset($data['status'])){echo "Chúng Tôi Đã Nhận Được Liên Hệ Của Bạn !!";} ?></h3>
+                    <form id="contact" action="<?php echo Core::base_url(); ?>home/contact" method="post">
+                        <div class="row field-row">    
                             <div class="col-xs-12 col-sm-6">
                                 <label for="param_name">Tên đầy đủ(<span class="text-danger">*</span>)</label>
-                                <input class="le-input" id="param_name" value="" name="name">
+                                <input class="le-input" id="param_name" value="" name="name" required>
                                 <div name="name_autocheck" class="autocheck"></div>
                                 <div name="name_error" class="text-danger"></div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <label for="param_email">Email(<span class="text-danger">*</span>)</label>
-                                <input class="le-input" id="param_email" value="" name="email" _autocheck="true">
+                                <input class="le-input" id="param_email" value="" name="email" _autocheck="true" required>
                                 <div name="email_autocheck" class="autocheck"></div>
                                 <div name="email_error" class="text-danger"></div>
                             </div>
@@ -61,13 +62,13 @@
                         <div class="row field-row">
                             <div class="col-xs-12 col-sm-6">
                                 <label for="param_phone">Di động</label>
-                                <input class="le-input" id="param_phone" value="" name="phone" _autocheck="true">
+                                <input class="le-input" id="param_phone" value="" name="phone" _autocheck="true" required>
                                 <div name="phone_autocheck" class="autocheck"></div>
                                 <div name="phone_error" class="text-danger"></div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <label>Địa chỉ</label>
-                                <input class="le-input" id="param_address" value="" name="address" _autocheck="true">
+                                <input class="le-input" id="param_address" value="" name="address" _autocheck="true" required>
                                 <div name="address_autocheck" class="autocheck"></div>
                                 <div name="address_error" class="text-danger"></div>
                             </div>
@@ -75,14 +76,14 @@
                         <!-- /.field-row -->
                         <div class="field-row">
                             <label for="param_title">Tiêu đề</label>
-                            <input class="le-input" id="param_title" value="" name="title" _autocheck="true">
+                            <input class="le-input" id="param_title" value="" name="title" _autocheck="true" required>
                             <div name="ptitle_autocheck" class="autocheck"></div>
                             <div name="title_error" class="text-danger"></div>
                         </div>
                         <!-- /.field-row -->
                         <div class="field-row">
                             <label for="param_content">Nội dung(<span class="text-danger">*</span>)</label>
-                            <textarea rows="8" class="le-input" name="content" id="param_content" _autocheck="true"></textarea>
+                            <textarea rows="8" class="le-input" name="content" id="param_content" _autocheck="true" required></textarea>
                             <div name="content_autocheck" class="autocheck"></div>
                             <div name="content_error" class="text-danger"></div>
                         </div>

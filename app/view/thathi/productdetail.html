@@ -1,3 +1,8 @@
+<?php include'../../model/product.php';
+     $pro = new Product_model();
+     $cateid= $data[0]['category_id'];
+    $data1 = $pro->relate($cateid);
+ ?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -6,16 +11,42 @@
   js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+            <!-- Start: Breadcrumbs-->
+            <div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul vocab="http://schema.org/" typeof="BreadcrumbList">
+                    			                                <li property="itemListElement" typeof="ListItem">
+                                    <a property="item" typeof="WebPage" href="" title="Trang chủ">
+                                        Trang chủ                                    </a>
+                                    <span> —› </span>
+                                </li>
+			                    			                                <li property="itemListElement" typeof="ListItem">
+                                    <a property="item" typeof="WebPage" href="" title="Sản phẩm">
+                                        Sản phẩm                                    </a>
+                                    <span> —› </span>
+                                </li>
+			                    			                                <li property="itemListElement" typeof="ListItem">
+                                    <span property="item" typeof="WebPage"><?php echo $data[0][product_name]; ?></span>
+                                </li>
+			                                    </ul>
+            </div>
+        </div>
+    </div>
+</div>            <!-- End: Breadcrumbs -->
             <!-- Start: Top Home Content -->
             <div class="main-container">
                 <div class="container">
-                    <div class="product-box-desktop row" itemscope="" itemtype="http://schema.org/Product">
+                    <div class="product-box-desktop row" itemscope="" itemtype="">
         <!-- Start: Info Product -->
         <div class="product-img-box col-md-6 col-xs-12">
-                <div class="web5s-proimg-full" itemscope="" itemtype="http://schema.org/ImageObject">
+                <div class="web5s-proimg-full" itemscope="" itemtype="">
         <div class="product-img-list clearfix">
-         <span id="slider-prev" class="more-views-nav"><a class="bx-prev disabled" href=""><i class="fa fa-angle-up"></i></a></span>
-         <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 438px;"><div id="gallery-img-list" style="width: auto; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+         <span id="slider-prev" class="more-views-nav"><a class="bx-prev disabled"><i class="fa fa-angle-up"></i></a></span>
+         <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;">
+         <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 438px;">
+         <div id="gallery-img-list" style="width: auto; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
             <div class="item-img" style="float: none; list-style: none; position: relative; width: 90px; margin-bottom: 6px;">
                 <a href="<?php echo Core::base_url().'file_upload/'.$data[0]['image_detail_1'];?>" title="Vest bé trai thời trang 1" data-image="<?php echo Core::base_url().'file_upload/'.$data[0]['image_detail_1'];?>" data-zoom-image="<?php echo Core::base_url().'file_upload/'.$data[0]['image_detail_1'];?>">
                     <img src="<?php echo Core::base_url().'file_upload/'.$data[0]['image_detail_1'];?>" alt="0">
@@ -41,7 +72,7 @@
                     </a>
                 </div>
                     </div></div><div class="bx-controls"></div></div>
-         <span id="slider-next" class="more-views-nav"><a class="bx-next" href=""><i class="fa fa-angle-down"></i></a></span>
+         <span id="slider-next" class="more-views-nav"><a class="bx-next"><i class="fa fa-angle-down"></i></a></span>
     </div>
         
     <div class="product-img-zoom">
@@ -103,17 +134,51 @@
         
         
     
-    <div class="price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+    <div class="price" itemprop="offers" itemscope="" itemtype="">
         <div class="price-current">
             <span itemprop="price" content="560000"><?php echo number_format($data[0]['price']); ?></span>
             <span itemprop="priceCurrency" content="VND">₫</span>
             <span itemprop="availability" content="InStock"></span>
         </div>
-                        <div class="price-prev"><?php echo $data[0]['product_display']; ?></div>
+                        <div class="price-prev"><?php echo $data[0]['price_display']; ?></div>
             </div>
 
        
           <form action="<?php echo Core::base_url().'home/addorder'?>" >
+               <div class="choose-product">
+                                <label>Size</label>
+                <div class="choose-it clearfix">
+                                         <div class="property-select">
+                        <input name="attributes_51" value="786" type="radio" id="attributes_786">
+                        <label for="attributes_786">
+                            <span class="text">S</span>
+                        </label>
+                    </div>
+                                        <div class="property-select">
+                        <input name="attributes_51" value="787" type="radio" id="attributes_787">
+                        <label for="attributes_787">
+                            <span class="text">M</span>
+                        </label>
+                    </div>
+                                        <div class="property-select">
+                        <input name="attributes_51" value="788" type="radio" id="attributes_788">
+                        <label for="attributes_788">
+                            <span class="text">L</span>
+                        </label>
+                    </div>
+                                    </div>
+                <div name="attributes_51_error" class="text-danger"></div>
+                                <label>Màu sắc</label>
+                <div class="choose-it clearfix">
+                                         <div class="property-select">
+                        <input name="attributes_52" value="789" type="radio" id="attributes_789" checked="checked">
+                        <label for="attributes_789">
+                            <span class="text">Xanh</span>
+                        </label>
+                    </div>
+                                    </div>
+                <div name="attributes_52_error" class="text-danger"></div>
+                            </div>
         <div class="qnt-holder">
             <div class="le-quantity">
                 <a class="minus" href="javascript:void(0)"></a>
@@ -183,8 +248,7 @@
         <!-- End: Product description -->
         </div>
 
-        <!-- Start: Products same_cat-->
-         <div class="featured-products products-grid product-related">
+   <div class="featured-products products-grid product-related">
     <div class="fea-items-products">
         <div class="new_title">
             <h2>Sản phẩm liên quan</h2>
@@ -192,34 +256,38 @@
         <div id="featured-slider">
              <div id="owl-newfeatured-web5s" class="owl-carousel clickable owl-theme owl-loaded">
                     
+    
                 <!-- .owl-allproducts -->
-            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 198.333px;"><div class="owl-item active" style="width: 198.333px; margin-right: 0px;"><div class="item">
+            <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 396.666px;">
+            <div class="owl-item active" style="width: 198.333px; margin-right: 0px;"><div class="item">
+            <?php foreach($data1 as $item){ ?>
         <div class="item-inner">
             <div class="item-img">
                 <div class="item-img-info">
-                    <a href="http://binhvan.web5s.com.vn/san-pham/vay-xanh-dang-xuong-cho-be-gai" title="Váy xanh dáng xuông cho bé gái" class="product-image">
-                        <img src="./image/thumb(7).php" alt="0">
+                    <a href="http://milano.web5s.com.vn/san-pham/vest-be-trai-thoi-trang" title="Vest bé trai thời trang" class="product-image">
+                        <img src="./Váy xanh dáng xuông cho bé gái_files/thumb(7).php" alt="0">
                     </a>
                     <div class="sale-label sale-top-right">
-                        <span>-18%</span></div>                </div> 
+                        <span>-26%</span></div>                </div> 
                 <!--item-img-info-->
             </div> 
             <!--item-img-->
             <div class="item-info">
                 <div class="info-inner">
                     <div class="item-title">
-                        <a title="Váy xanh dáng xuông cho bé gái" href="http://binhvan.web5s.com.vn/san-pham/vay-xanh-dang-xuong-cho-be-gai">Váy xanh dáng xuông cho bé gái</a>
+                        <a title="Vest bé trai thời trang" href="">Vest bé trai thời trang</a>
                     </div> 
                     <div class="item-content">
                         <div class="item-price">
                             <div class="price-box">
                                 <p class="old-price">
                                     <span class="price-label">Giá cũ:</span>
-                                    <span id="old-price-45" class="price">425.000₫</span>
+                                    <span id="old-price-45" class="price">760.000₫</span>
                                 </p>
                                 <p class="special-price">
                                     <span class="price-label">Giá khuyến mại:</span>
-                                    <span id="product-price-45" class="price">350.000₫</span>
+                                    <span id="product-price-45" class="price">560.000₫</span>
                                 </p>
                             </div>
                         </div>
@@ -227,13 +295,65 @@
                         <div class="actions">
                             <div class="add_cart">
                                 <!-- Add cart -->
-                                <a href="javascript:void(0)" class="link-wishlist add_favorite " data="16923" title="Yêu thích sản phẩm"></a>
+                                <a href="javascript:void(0)" class="link-wishlist add_favorite " data="294" title="Yêu thích sản phẩm"></a>
                                 
-                                <a href="http://binhvan.web5s.com.vn/san-pham/vay-xanh-dang-xuong-cho-be-gai" class="button btn-cart" title="Mua hàng">
+                                <a href="http://milano.web5s.com.vn/san-pham/vest-be-trai-thoi-trang" class="button btn-cart" title="Mua hàng">
                                     <span>Mua hàng</span>
                                 </a>
                                 
-                                <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="16923" title="Thêm vào so sánh"></a>
+                                <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="294" title="Thêm vào so sánh"></a>
+                            </div>
+                        </div> 
+                        <!-- Actions -->
+                    </div> 
+                    <!--item-content-->
+                </div> 
+                <!--info-inner-->
+            </div> 
+            <!--item-info-->
+        </div>
+        <?php } ?>
+    </div></div>
+    <div class="owl-item active" style="width: 198.333px; margin-right: 0px;"><div class="item">
+        <div class="item-inner">
+            <div class="item-img">
+                <div class="item-img-info">
+                    <a href="http://milano.web5s.com.vn/san-pham/da-da-tiec-sanh-dieu" title="Dạ dạ tiệc sành điệu" class="product-image">
+                        <img src="./Váy xanh dáng xuông cho bé gái_files/thumb(8).php" alt="0">
+                    </a>
+                                   </div> 
+                <!--item-img-info-->
+            </div> 
+            <!--item-img-->
+            <div class="item-info">
+                <div class="info-inner">
+                    <div class="item-title">
+                        <a title="Dạ dạ tiệc sành điệu" href="http://milano.web5s.com.vn/san-pham/da-da-tiec-sanh-dieu">Dạ dạ tiệc sành điệu</a>
+                    </div> 
+                    <div class="item-content">
+                        <div class="item-price">
+                            <div class="price-box">
+                                <p class="old-price">
+                                    <span class="price-label">Giá cũ:</span>
+                                    <span id="old-price-45" class="price"></span>
+                                </p>
+                                <p class="special-price">
+                                    <span class="price-label">Giá khuyến mại:</span>
+                                    <span id="product-price-45" class="price">650.000₫</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <div class="add_cart">
+                                <!-- Add cart -->
+                                <a href="javascript:void(0)" class="link-wishlist add_favorite " data="289" title="Yêu thích sản phẩm"></a>
+                                
+                                <a href="http://milano.web5s.com.vn/san-pham/da-da-tiec-sanh-dieu" class="button btn-cart" title="Mua hàng">
+                                    <span>Mua hàng</span>
+                                </a>
+                                
+                                <a href="javascript:void(0)" class="link-compare add_to_compare add_compare " data="289" title="Thêm vào so sánh"></a>
                             </div>
                         </div> 
                         <!-- Actions -->
@@ -252,8 +372,19 @@
 </div>
 
 <!-- Start: Products viewed-->
-                </div>
+<div class="product-review clearfix">
+    <div class="col-md-2">
+        <p class="title-review">Sản phẩm đã xem</p>
+    </div>
+    <div class="col-md-10">
+        <ul class="image-review clearfix">
+                        <li class="item clearfix">
+                <a href="http://milano.web5s.com.vn/san-pham/vay-xanh-dang-xuong-cho-be-gai" title="Váy xanh dáng xuông cho bé gái">
+                    <img src="./Váy xanh dáng xuông cho bé gái_files/thumb(9).php" alt="0">
+                </a>
+            </li>
+                    </ul>
+    </div>
+</div><!-- End: Products viewed-->                </div>
             </div>
             <!-- End: Top Home Content -->
-            
-          

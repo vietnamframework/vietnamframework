@@ -10,19 +10,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
         <!-- Favicon -->
         <link rel="shortcut icon" href="" type="image/x-icon">
-        <meta name="description" content="Milano&#39;s - Multipurpose Resposive Web5s Theme">
-        <meta name="keywords" content="Milano&#39;s - Multipurpose Resposive Web5s Theme">
-        <meta name="news_keywords" content="Milano&#39;s - Multipurpose Resposive Web5s Theme">
         <meta name="robots" content="index, follow">
         <meta http-equiv="content-language" content="VN">
         <!-- Og Option -->
         <meta property="og:site_name" content="<?php echo Core::base_url(); ?>">
         <meta property="og:locale" content="VN">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="http://media.web5s.com.vn/sites/1405/logo/logo.png">
-        <meta property="og:title" content="Milano&#39;s - Multipurpose Resposive Web5s Theme">
         <meta property="og:url" content="<?php echo Core::base_url(); ?>">
-        <meta property="og:description" content="Milano&#39;s - Multipurpose Resposive Web5s Theme">
         <link rel="canonical" href="<?php echo Core::base_url(); ?>">
         <!-- Java Script 
             ================================================== -->
@@ -41,6 +35,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo View::getPathView(); ?>css/reset.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo View::getPathView(); ?>css/style.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo View::getPathView(); ?>css/library.css" media="all">
+        <link rel="stylesheet" type="text/css" href="<?php echo View::getPathView(); ?>css/font-awesome.css" media="all">
         <!-- Required CSS -->
         <link rel="stylesheet" type="text/css" href="<?php echo View::getPathView(); ?>css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="<?php echo View::getPathView(); ?>css/jquery.mCustomScrollbar.css">
@@ -64,6 +59,28 @@
                 "use strict";
                 Web5s.init({});
             });
+            function showResult(str) {
+            	  if (str.length==0) { 
+            	    document.getElementById("livesearch").innerHTML="";
+            	    document.getElementById("livesearch").style.border="0px";
+            	    return;
+            	  }
+            	  if (window.XMLHttpRequest) {
+            	    // code for IE7+, Firefox, Chrome, Opera, Safari
+            	    xmlhttp=new XMLHttpRequest();
+            	  } else {  // code for IE6, IE5
+            	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            	  }
+            	  xmlhttp.onreadystatechange=function() {
+            	    if (this.readyState==4 && this.status==200) {
+            	      document.getElementById("livesearch").innerHTML=this.responseText;
+            	      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+            	    }
+            	  }
+            	  xmlhttp.open("GET","http://localhost/thathi/home/search?q="+str,true);
+                 // console.log("http://localhost/thathi/home/search?q="+str);
+            	  xmlhttp.send();
+            	}
         </script>
         <script type="text/javascript" src="<?php echo View::getPathView(); ?>js/jquery.nst.ui.js"></script>
         <script type="text/javascript" src="<?php echo View::getPathView(); ?>js/custom.js"></script>
@@ -73,7 +90,7 @@
         <div id="web5s_wrapper">
             <!-- Start: Header -->
             <!-- Start: Header Wrapper-->
-            <div id="web5s_header">
+            <div id="web5s_header" style="background-color:#99FF99;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-xs-12 col-sm-5">
@@ -92,7 +109,7 @@
                             <!-- Start: Menu-->
                             <ul class="links">
                                 <li class=" active">
-                                    <a href="<?php echo Core::base_url(); ?>home" title="Trang chủ">Trang chủ            </a>
+                                    <a href="<?php echo Core::base_url(); ?>home"  title="Trang chủ">Trang chủ            </a>
                                 </li>
                                 <li class=" ">
                                     <a href="<?php echo Core::base_url(); ?>home/gioithieu" title="Giới thiệu">Giới thiệu            </a>
@@ -135,12 +152,13 @@
                         </div>
                         <div class="col-lg-5 col-xs-12 col-sm-4 search-section">
                             <div class="search-box pull-left">
-                                <form method="get" action="<?php echo Core::base_url(); ?>" id="search_mini_form">       
-                                    <input type="text" maxlength="128" placeholder="Từ khóa tìm kiếm..." class="" value="" name="tu-khoa" id="search">
+                                <form method="GET" action="<?php echo Core::base_url().'home/showsearch' ;?>">       
+                                    <input type="text" maxlength="128" placeholder="Từ khóa tìm kiếm..." onkeyup="showResult(this.value)" name="q" id="search">
                                     <button class="search-btn-bg" title="Tìm kiếm" type="submit">
                                     <span class="fa fa-search"></span>
-                                    </button>   
+                                    </button>     
                                 </form>
+                                <div id="livesearch"></div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-4 col-xs-3 nav-right mycart pull-right">
@@ -166,7 +184,7 @@
                                                 <span class="number1">
                                                 <span class="number1">Giỏ hàng:</span>
                                                 <span class="number2">
-                                                <a href="<?php echo Core::base_url(); ?>addorder" rel="nofollow" title="Tổng số sản phẩm">
+                                                <a href="<?php echo Core::base_url(); ?>home/addorder" rel="nofollow" title="Tổng số sản phẩm">
                                                 (<span id="cart_total">
                                                 <?php foreach($_SESSION['cart'] as $item){ 
                                                        $qty += $item['qty']; 
@@ -197,7 +215,7 @@
                                                     <img width="78px" height="92px" alt="<?php echo $result['product_name'] ?>" src="<?php echo Core::base_url().'file_upload/'.$result['image_avata']?>">
                                                     </a>
                                                     <div class="product-details">
-                                                        <a class="btn-remove" title="Xóa sản phẩm khỏi giỏ hàng" href="<?php echo Core::base_url().'unsetpro?id='.$result['id']; ?>">
+                                                        <a class="btn-remove" title="Xóa sản phẩm khỏi giỏ hàng" href="<?php echo Core::base_url().'home/unsetpro?id='.$result['id']; ?>">
                                                         <i class="fa fa-close"></i> Xóa                                </a>
                                                         <p class="product-name"><a href="<?php echo Core::base_url(); ?>" target="_blank" title=""><?php echo $result['product_name'] ?></a></p>
                                                         <span class="price"><?php echo number_format($result['price'])?> x <?php echo $result['qty'] ?></span>                  
@@ -230,7 +248,7 @@
                     <span class="number1">
                             <span class="number1">Giỏ hàng:</span>
                             <span class="number2">
-                                <a title="Tổng số sản phẩm" rel="nofollow" href="http://milano.web5s.com.vn/gio-hang">(<span id="cart_total">0</span>)</a>
+                                <a title="Tổng số sản phẩm" rel="nofollow" href="">(<span id="cart_total">0</span>)</a>
                             </span>
                     </span>
                 </p>

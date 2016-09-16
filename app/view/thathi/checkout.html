@@ -252,6 +252,7 @@
                         <div class="name">
                             <a href=""><span><?php echo $result['product_name']; ?></span></a>
                         </div>
+                        
                         <div class="brand">
                             <a title="" target="_blank" href=""></a>
                                                     </div>
@@ -260,6 +261,8 @@
                         <div class="ut-price"><?php echo number_format($result['price']); ?></div>
                         <div class="quantity"><?php echo $result['qty']; ?></div>
                         <div class="tt-price"><?php echo number_format($result['price'] * $result['qty']);  ?></div>
+                         <a class="btn-remove" title="Xóa sản phẩm khỏi giỏ hàng" href="<?php echo Core::base_url().'home/unsetpro?id='.$result['id']; ?>">
+                                                        <i class="fa fa-close"></i> Xóa                                </a>
                     </div>
                 </div>
             </div>
@@ -273,15 +276,18 @@
                         <tr id="row_total_amount">
                             <td id="cell_total_amount_label"><label>Tạm tính:</label></td>
                             <td id="cell_total_amount_value" class="text-right">
-                                <strong><?php echo $tota; ?></strong>
+                                <strong><?php echo $total; ?></strong>
                             </td>
                         </tr>
                         <tr id="row_delivery_fee">
                             <td id="cell_delivery_fee_label">
-                                Chuyển hàng tận nơi                                <i class="sprites icon-question tooltipster-link" data-toggle="popover" data-placement="top" data-content="&lt;a target=&#39;_blank&#39; href=&#39;&#39;&gt; Xem chính sách giao hàng &lt;/a&gt;" data-original-title="" title=""></i>
+                                Chuyển hàng tận nơi                                
+                            <i class="sprites icon-question tooltipster-link" data-toggle="popover" data-placement="top" data-content="&lt;a target=&#39;_blank&#39; href=&#39;&#39;&gt; Xem chính sách giao hàng &lt;/a&gt;" data-original-title="" title=""></i>
                             </td>
                             <td id="cell_delivery_fee_value" class="text-right">
-                                <strong class="text-green" id="total_fee_ship_amount">35.000₫</strong>
+                                <strong class="text-green" id="total_fee_ship_amount">
+                                <?php if($total>500000){ echo "0₫";}else{ echo "35.000₫";}?>
+                                </strong>
                             </td>
                         </tr>
                         <tr id="row_saleOff">
@@ -306,7 +312,7 @@
                         <tr id="row_total_purchase">
                             <td id="cell_total_purchase_label" class="fs15">Tổng tiền thanh toán</td>
                             <td id="cell_total_purchase_value" class="text-right">
-                                <strong><?php $ship = 35000; echo number_format($total+$ship); ?>₫</strong>
+                                <strong><?php $ship = 35000; if($total > 500000 || $result['qty'] ==0){echo $total;}else{echo number_format($total+$ship); } ?>₫</strong>
                             </td>
                         </tr>
                     </tbody>

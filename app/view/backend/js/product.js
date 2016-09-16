@@ -1,5 +1,4 @@
 var url;
-var translate = false;
      function newproduct(){
          $('#dlg').dialog('open').dialog('center').dialog('setTitle','New product');
          $('#fm').form('clear');
@@ -12,8 +11,10 @@ var translate = false;
              $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit product');
              nicEditors.findEditor('content_content').setContent(row.description_detail);
              row.file = '';
+             //console.log(row);
              $('#fm').form('load',row);
              url = url_base+'product_backend/update?id='+row.id;
+             console.log(url);
          }
      }
      function transproduct(){

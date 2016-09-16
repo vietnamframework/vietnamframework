@@ -57,9 +57,11 @@ Class Home_Controller extends Frontend_Controller {
         public function productdetail(){
 			  $id = $_GET['id'];
 			  $pro = new Product_model();
-			  $result = $pro -> get_product_by($id);
+			  $data = $pro -> get_product_by($id);
+			  //$cateid= $data[0]['category_id'];
+			  //$data1 = $pro->relate($cateid);
 			  Session::set('template', 'thathi');
-			  return $this->renderTemplateFronend('productdetail',$result);
+			  return $this->renderTemplateFronend('productdetail',$data);
 			
 		}
 		public function destroy(){
@@ -70,7 +72,9 @@ Class Home_Controller extends Frontend_Controller {
 		}
 		public function unsetpro(){
 			$id = $_GET['id'];
-			unset($_SESSION['cart']['id']);
+			unset($_SESSION['cart'][$id]);
+			Session::set('template', 'thathi');
+			return $this->renderTemplateFronend('checkout',$result);
 			
 		}
 		public function viewcart(){
@@ -126,6 +130,61 @@ Class Home_Controller extends Frontend_Controller {
 			Session::set('template', 'thathi');
 			return $this->renderTemplateFronend('lienhe'); // homepage
 		}
+		public function contact(){
+			$param = $this->get_param(array('name', 'email', 'phone','address','title','content'));
+			$c = new Contact_model();
+			$data1 = $c ->create_contact($param);	
+			Session::set('template', 'thathi');	
+			$data['status']= 'OK';
+			return $this->renderTemplateFronend('lienhe',$data); // homepage
+			
+		}
+		
+		public function search(){
+			$q=$_GET["q"];
+			//var_dump($q);die();
+			$s = new Product_model();	
+			$x =$s->search_product($q);
+			//lookup all links from the xml file if length of q>0
+			if (strlen($q)>0) {
+				$hint="";
+				foreach($x as $gan) {
+					$y=$gan['product_name'];
+					$z=$gan['id'];
+						//find a link matching the search text
+						if (stristr($y,$q)) {
+							if ($hint=="") {
+								
+								$hint="<a href='". Core::base_url() ."home/productdetail?id=$z'>".$y."</a><br>";
 
+							} else {
+								$hint = $hint . "<a href='". Core::base_url() ."home/productdetail?id=$z'>".$y."</a><br>";
+							}
+						
+					}
+				}
+			}
+			
+			// Set output to "no suggestion" if no hint was found
+			// or to the correct value
+			if ($hint=="") {
+				$response="no suggestion";
+			} else {
+				$response=$hint;
+			}
+			
+			//output the response
+			echo $response;
+			
+		}
+		public function showsearch(){
+			$q=$_GET["q"];
+			$s = new Product_model();
+			$data['product'] =$s->search_product($q);
+			Session::set('template', 'thathi');
+			return $this->renderTemplateFronend('showsearch',$data); // homepage
+			
+			
+		}
 	
 }/** end Class **/

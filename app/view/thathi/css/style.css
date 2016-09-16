@@ -5,7 +5,7 @@
     src: url(../font/fontawesome-webfont.ttf);
 }
 body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", FontAwesome,Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 1.5;
@@ -201,7 +201,7 @@ button.button:hover {
   text-transform: uppercase;
 }
 .free-shipping {
-  color: #dba463;
+  color: black;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -224,7 +224,7 @@ button.button:hover {
   padding: 5px 0 0;
   margin: 35px 0 auto;
   font-size: 12px;
-  color: #aaa;
+  color: black;
 }
 .logo {
   padding-top: 5px;
@@ -307,7 +307,7 @@ button.button:hover {
   animation: fadeIn .3s ease-in;
 }
 .toplinks ul.links > li > a {
-  color: #ccc;
+  color: white;
   display: inline-block;
   font-size: 13px;
   font-weight: 600;

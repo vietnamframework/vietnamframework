@@ -2,9 +2,9 @@
 class product_Backend_Controller extends Backend_Controller {
     
     public function Index() {
-        $ctg_model = new Category_model();
-        $data_category = $ctg_model->get_list_category();
-        $data['category'] = json_encode($data_category);
+        $ctg_model = new Menu_model();
+        $data_category = $ctg_model->get_list_menu();
+        $data['menu'] = json_encode($data_category);
         
         $language_model = new Language_model();
         $data_language = $language_model->get_list_language();
@@ -107,7 +107,22 @@ class product_Backend_Controller extends Backend_Controller {
      * @permission product/update|Update product @end_permission
      */
     public function Update() {
-        $param = $this->get_param(array('lang_id', 'title', 'content', 'category_id', 'file_name', 'tag', 'id'));
+        $param = $this->get_param(array('product_name'
+        		, 'price'
+        		, 'price_display'
+        		, 'discount'
+        		, 'product_code'
+        		, 'status'
+        		, 'rate'
+        		, 'description'
+        		, 'description_detail'
+        		, 'froms_product'
+        		, 'material'
+        		, 'age_from'
+        		, 'age_to'
+        		, 'size_id'
+        		, 'genders'
+        		, 'category_id'));
         $result['errorMsg'] = '';
         if(!empty($param['id'])) {
             $id = $param['id'];
